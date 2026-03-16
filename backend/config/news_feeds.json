@@ -64,6 +64,36 @@
       "name": "Stars and Stripes",
       "url": "https://www.stripes.com/feeds/pacific.rss",
       "weight": 4
+    },
+    {
+      "name": "Yonhap",
+      "url": "https://en.yna.co.kr/RSS/news.xml",
+      "weight": 4
+    },
+    {
+      "name": "Nikkei Asia",
+      "url": "https://asia.nikkei.com/rss",
+      "weight": 3
+    },
+    {
+      "name": "Taipei Times",
+      "url": "https://www.taipeitimes.com/xml/pda.rss",
+      "weight": 4
+    },
+    {
+      "name": "Asia Times",
+      "url": "https://asiatimes.com/feed/",
+      "weight": 3
+    },
+    {
+      "name": "Defense News",
+      "url": "https://www.defensenews.com/arc/outboundfeeds/rss/",
+      "weight": 3
+    },
+    {
+      "name": "Japan Times",
+      "url": "https://www.japantimes.co.jp/feed/",
+      "weight": 3
     }
   ]
 }

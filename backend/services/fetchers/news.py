@@ -111,6 +111,22 @@ _KEYWORD_COORDS = {
     "singapore": (1.352, 103.819),
     "bangkok": (13.756, 100.501),
     "jakarta": (-6.208, 106.845),
+    # East Asia — islands, straits, and disputed areas
+    "pratas": (20.71, 116.72),
+    "dongsha": (20.71, 116.72),
+    "kinmen": (24.45, 118.38),
+    "matsu": (26.16, 119.94),
+    "scarborough": (15.14, 117.77),
+    "paracel": (16.50, 112.00),
+    "spratly": (10.00, 114.00),
+    "miyako strait": (24.78, 125.30),
+    "bashi channel": (21.00, 121.50),
+    "luzon strait": (20.50, 121.50),
+    " dmz ": (38.00, 127.00),
+    "yalu": (40.00, 124.40),
+    "yongbyon": (39.80, 125.76),
+    "wonsan": (39.18, 127.48),
+    "busan": (35.18, 129.07),
 }
 
 # Immutable after module load — sort by descending keyword length so

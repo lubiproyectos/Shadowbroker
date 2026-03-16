@@ -72,6 +72,53 @@ class TestResolveCoords:
         result = _resolve_coords("visit the uk soon")
         assert result == (55.378, -3.435)
 
+    # -- New East Asia island/strait keywords ------------------------------------
+
+    def test_pratas(self):
+        assert _resolve_coords("china patrols near pratas islands") == (20.71, 116.72)
+
+    def test_dongsha(self):
+        assert _resolve_coords("dongsha atoll tensions") == (20.71, 116.72)
+
+    def test_kinmen(self):
+        assert _resolve_coords("artillery drill near kinmen") == (24.45, 118.38)
+
+    def test_matsu(self):
+        assert _resolve_coords("matsu island cable cut") == (26.16, 119.94)
+
+    def test_scarborough(self):
+        assert _resolve_coords("scarborough shoal standoff") == (15.14, 117.77)
+
+    def test_paracel(self):
+        assert _resolve_coords("paracel islands dispute") == (16.50, 112.00)
+
+    def test_spratly(self):
+        assert _resolve_coords("spratly island reclamation") == (10.00, 114.00)
+
+    def test_miyako_strait(self):
+        assert _resolve_coords("PLAN warships transit miyako strait") == (24.78, 125.30)
+
+    def test_bashi_channel(self):
+        assert _resolve_coords("submarine detected in bashi channel") == (21.00, 121.50)
+
+    def test_luzon_strait(self):
+        assert _resolve_coords("luzon strait patrol") == (20.50, 121.50)
+
+    def test_dmz(self):
+        assert _resolve_coords("tension at the dmz border") == (38.00, 127.00)
+
+    def test_yalu(self):
+        assert _resolve_coords("troops near yalu river") == (40.00, 124.40)
+
+    def test_yongbyon(self):
+        assert _resolve_coords("activity at yongbyon reactor") == (39.80, 125.76)
+
+    def test_wonsan(self):
+        assert _resolve_coords("missile launch from wonsan") == (39.18, 127.48)
+
+    def test_busan(self):
+        assert _resolve_coords("naval exercise near busan port") == (35.18, 129.07)
+
     # -- No match --------------------------------------------------------------
 
     def test_no_match_returns_none(self):
@@ -98,5 +145,6 @@ class TestFeedConfig:
 
     def test_new_east_asia_feeds_present(self):
         names = {f["name"] for f in DEFAULT_FEEDS}
-        expected = {"FocusTaiwan", "Kyodo", "SCMP", "The Diplomat", "Stars and Stripes"}
+        expected = {"FocusTaiwan", "Kyodo", "SCMP", "The Diplomat", "Stars and Stripes",
+                    "Yonhap", "Nikkei Asia", "Taipei Times", "Asia Times", "Defense News", "Japan Times"}
         assert expected.issubset(names)

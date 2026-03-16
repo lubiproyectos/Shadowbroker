@@ -9,7 +9,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "news_feeds.json"
-MAX_FEEDS = 20
+MAX_FEEDS = 25
 
 DEFAULT_FEEDS = [
     {"name": "NPR", "url": "https://feeds.npr.org/1004/rss.xml", "weight": 4},
@@ -25,6 +25,12 @@ DEFAULT_FEEDS = [
     {"name": "SCMP", "url": "https://www.scmp.com/rss/91/feed", "weight": 4},
     {"name": "The Diplomat", "url": "https://thediplomat.com/feed/", "weight": 4},
     {"name": "Stars and Stripes", "url": "https://www.stripes.com/feeds/pacific.rss", "weight": 4},
+    {"name": "Yonhap", "url": "https://en.yna.co.kr/RSS/news.xml", "weight": 4},
+    {"name": "Nikkei Asia", "url": "https://asia.nikkei.com/rss", "weight": 3},
+    {"name": "Taipei Times", "url": "https://www.taipeitimes.com/xml/pda.rss", "weight": 4},
+    {"name": "Asia Times", "url": "https://asiatimes.com/feed/", "weight": 3},
+    {"name": "Defense News", "url": "https://www.defensenews.com/arc/outboundfeeds/rss/", "weight": 3},
+    {"name": "Japan Times", "url": "https://www.japantimes.co.jp/feed/", "weight": 3},
 ]
 
 

@@ -39,6 +39,11 @@ def fetch_ships():
     for ship in ships:
         enrich_with_yacht_alert(ship)
 
+    # Enrich ships with PLAN/CCG vessel data
+    from services.fetchers.plan_vessel_alert import enrich_with_plan_vessel
+    for ship in ships:
+        enrich_with_plan_vessel(ship)
+
     logger.info(f"Ships: {len(carriers)} carriers + {len(ais_vessels)} AIS vessels")
     with _data_lock:
         latest_data['ships'] = ships

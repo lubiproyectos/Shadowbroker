@@ -1475,11 +1475,11 @@ const MaplibreViewer = ({ data, activeLayers, onEntityClick, flyToLocation, sele
                             id="military-bases-layer"
                             type="circle"
                             paint={{
-                                'circle-color': '#ef4444',
+                                'circle-color': ['match', ['get', 'side'], 'red', '#ef4444', 'green', '#22c55e', '#3b82f6'],
                                 'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 6, 7, 10, 10],
                                 'circle-opacity': 0.8,
                                 'circle-stroke-width': 2,
-                                'circle-stroke-color': '#fca5a5',
+                                'circle-stroke-color': ['match', ['get', 'side'], 'red', '#fca5a5', 'green', '#86efac', '#93c5fd'],
                             }}
                         />
                         <Layer
@@ -1494,7 +1494,7 @@ const MaplibreViewer = ({ data, activeLayers, onEntityClick, flyToLocation, sele
                                 'text-allow-overlap': false,
                             }}
                             paint={{
-                                'text-color': '#fca5a5',
+                                'text-color': ['match', ['get', 'side'], 'red', '#fca5a5', 'green', '#86efac', '#93c5fd'],
                                 'text-halo-color': 'rgba(0,0,0,0.9)',
                                 'text-halo-width': 1,
                             }}
@@ -1890,7 +1890,15 @@ const MaplibreViewer = ({ data, activeLayers, onEntityClick, flyToLocation, sele
                     if (!base) return null;
                     const branchLabel: Record<string, string> = {
                         air_force: 'AIR FORCE', navy: 'NAVY', marines: 'MARINES', army: 'ARMY',
+                        missile: 'MISSILE FORCES', nuclear: 'NUCLEAR FACILITY',
                     };
+                    const isAdversary = ['China', 'Russia', 'North Korea'].includes(base.country);
+                    const isROC = base.country === 'Taiwan';
+                    const accentColor = isAdversary ? 'red' : isROC ? 'green' : 'blue';
+                    const borderCls = isAdversary ? 'border-red-400/40' : isROC ? 'border-green-400/40' : 'border-blue-400/40';
+                    const textCls = isAdversary ? 'text-[#fca5a5]' : isROC ? 'text-[#86efac]' : 'text-[#93c5fd]';
+                    const titleCls = isAdversary ? 'text-red-400 border-b border-red-400/20' : isROC ? 'text-green-400 border-b border-green-400/20' : 'text-blue-400 border-b border-blue-400/20';
+                    const footerCls = isAdversary ? 'text-red-600' : isROC ? 'text-green-600' : 'text-blue-600';
                     return (
                         <Popup
                             longitude={base.lng}
@@ -1901,8 +1909,8 @@ const MaplibreViewer = ({ data, activeLayers, onEntityClick, flyToLocation, sele
                             className="threat-popup"
                             maxWidth="280px"
                         >
-                            <div className="map-popup bg-[#1a1035] border border-red-400/40 text-[#fca5a5] min-w-[200px]">
-                                <div className="map-popup-title text-red-400 border-b border-red-400/20 pb-1">
+                            <div className={`map-popup bg-[#1a1035] border ${borderCls} ${textCls} min-w-[200px]`}>
+                                <div className={`map-popup-title ${titleCls} pb-1`}>
                                     {base.name}
                                 </div>
                                 <div className="map-popup-row">
@@ -1911,7 +1919,7 @@ const MaplibreViewer = ({ data, activeLayers, onEntityClick, flyToLocation, sele
                                 <div className="map-popup-row">
                                     Location: <span className="text-white">{base.country}</span>
                                 </div>
-                                <div className="mt-1.5 text-[9px] text-red-600 tracking-wider">
+                                <div className={`mt-1.5 text-[9px] ${footerCls} tracking-wider`}>
                                     MILITARY BASE — {branchLabel[base.branch] || base.branch.toUpperCase()}
                                 </div>
                             </div>

@@ -35,10 +35,21 @@ class TestMilitaryBasesData:
             assert -180 <= entry["lng"] <= 180, f"{entry['name']} has invalid lng"
 
     def test_branch_values_are_known(self):
-        known_branches = {"air_force", "navy", "marines", "army"}
+        known_branches = {"air_force", "navy", "marines", "army", "missile", "nuclear"}
         raw = json.loads(BASES_PATH.read_text(encoding="utf-8"))
         for entry in raw:
             assert entry["branch"] in known_branches, f"{entry['name']} has unknown branch: {entry['branch']}"
+
+    def test_adversary_bases_present(self):
+        raw = json.loads(BASES_PATH.read_text(encoding="utf-8"))
+        countries = {entry["country"] for entry in raw}
+        for expected in ("China", "Russia", "North Korea", "Taiwan"):
+            assert expected in countries, f"Missing bases for {expected}"
+
+    def test_no_duplicate_names(self):
+        raw = json.loads(BASES_PATH.read_text(encoding="utf-8"))
+        names = [entry["name"] for entry in raw]
+        assert len(names) == len(set(names)), "Duplicate base names found"
 
 
 class TestFetchMilitaryBases:

@@ -38,6 +38,11 @@ _ICAO_COUNTRY_RANGES = [
     (0x840000, 0x87FFFF, "Japan", "JSDF"),
     (0x700000, 0x71FFFF, "South Korea", "ROK"),
     (0xE80000, 0xE80FFF, "Taiwan", "ROC"),
+    (0x150000, 0x157FFF, "Russia", "VKS"),
+    (0x7C0000, 0x7FFFFF, "Australia", "RAAF"),
+    (0x758000, 0x75FFFF, "Philippines", "PAF"),
+    (0x768000, 0x76FFFF, "Singapore", "RSAF"),
+    (0x720000, 0x727FFF, "North Korea", "KPAF"),
 ]
 
 
@@ -66,18 +71,24 @@ def _classify_military_type(raw_model: str) -> str:
     if any(k in model for k in [
         "F16", "F35", "F22", "F15", "F18", "T38", "T6", "A10",
         "J10", "J11", "J15", "J16", "J20", "JF17",
-        "SU27", "SU30", "SU35",
+        "SU27", "SU30", "SU35", "SU57", "MIG29", "MIG31",
         "F15J", "F2", "IDF", "FA50", "KF21",
     ]):
         return "fighter"
     if any(k in model for k in [
+        "TU95", "TU160", "TU22",
+    ]):
+        return "bomber"
+    if any(k in model for k in [
         "C17", "C5", "C130", "C30", "A400", "V22",
         "Y20", "Y9", "Y8", "C2",
+        "IL76", "AN124", "AN12",
     ]):
         return "cargo"
     if any(k in model for k in [
         "P8", "E3", "E8", "U2",
         "KJ500", "KJ200", "GX11", "P1", "E767", "E2K", "E2C",
+        "A50", "TU214R", "IL20",
     ]):
         return "recon"
     return "default"

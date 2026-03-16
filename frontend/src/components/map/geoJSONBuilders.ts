@@ -197,6 +197,16 @@ export function buildDataCentersGeoJSON(datacenters?: DataCenter[]): FC {
 
 // ─── Military Bases ─────────────────────────────────────────────────────────
 
+// Classify base alignment: red = adversary, blue = US/allied, green = ROC
+const _ADVERSARY_COUNTRIES = new Set(["China", "Russia", "North Korea"]);
+const _ROC_COUNTRIES = new Set(["Taiwan"]);
+
+function _baseSide(country: string, operator: string): "red" | "blue" | "green" {
+    if (_ADVERSARY_COUNTRIES.has(country)) return "red";
+    if (_ROC_COUNTRIES.has(country)) return "green";
+    return "blue";
+}
+
 export function buildMilitaryBasesGeoJSON(bases?: MilitaryBase[]): FC {
     if (!bases?.length) return null;
     return {
@@ -210,6 +220,7 @@ export function buildMilitaryBasesGeoJSON(bases?: MilitaryBase[]): FC {
                 country: base.country || '',
                 operator: base.operator || '',
                 branch: base.branch || '',
+                side: _baseSide(base.country || '', base.operator || ''),
             },
             geometry: { type: 'Point' as const, coordinates: [base.lng, base.lat] }
         }))

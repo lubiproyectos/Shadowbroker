@@ -36,6 +36,24 @@ class TestEnrichCountry:
     def test_invalid_hex_with_empty(self):
         assert _enrich_country("ZZZZ", "") == ("Military Asset", "")
 
+    def test_russia_range(self):
+        assert _enrich_country("150000", "Unknown") == ("Russia", "VKS")
+
+    def test_russia_range_end(self):
+        assert _enrich_country("157FFF", "Unknown") == ("Russia", "VKS")
+
+    def test_australia_range(self):
+        assert _enrich_country("7C0000", "Unknown") == ("Australia", "RAAF")
+
+    def test_philippines_range(self):
+        assert _enrich_country("758000", "Unknown") == ("Philippines", "PAF")
+
+    def test_singapore_range(self):
+        assert _enrich_country("768000", "Unknown") == ("Singapore", "RSAF")
+
+    def test_north_korea_range(self):
+        assert _enrich_country("720000", "Unknown") == ("North Korea", "KPAF")
+
 
 class TestClassifyMilitaryType:
     @pytest.mark.parametrize("model,expected", [
@@ -52,6 +70,22 @@ class TestClassifyMilitaryType:
         ("H60", "heli"),
         ("K35", "tanker"),
         ("Boeing 737", "default"),
+        # Russian aircraft
+        ("SU-27", "fighter"),
+        ("SU-30", "fighter"),
+        ("SU-35", "fighter"),
+        ("SU-57", "fighter"),
+        ("MiG-29", "fighter"),
+        ("MiG-31", "fighter"),
+        ("Tu-95", "bomber"),
+        ("Tu-160", "bomber"),
+        ("Tu-22", "bomber"),
+        ("IL-76", "cargo"),
+        ("AN-124", "cargo"),
+        ("AN-12", "cargo"),
+        ("A-50", "recon"),
+        ("Tu-214R", "recon"),
+        ("IL-20", "recon"),
     ])
     def test_classification(self, model: str, expected: str):
         assert _classify_military_type(model) == expected

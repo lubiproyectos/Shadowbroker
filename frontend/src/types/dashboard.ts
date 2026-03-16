@@ -43,7 +43,7 @@ export interface PrivateJet extends FlightBase {
 
 export interface MilitaryFlight extends FlightBase {
   type: "military_flight";
-  military_type?: "heli" | "fighter" | "tanker" | "cargo" | "recon" | "default";
+  military_type?: "heli" | "fighter" | "bomber" | "tanker" | "cargo" | "recon" | "default";
   force?: string;
 }
 
@@ -106,6 +106,12 @@ export interface Ship {
   yacht_length?: number;
   yacht_year?: number;
   yacht_link?: string;
+  // PLAN/CCG vessel enrichment
+  plan_name?: string;
+  plan_class?: string;
+  plan_force?: string;
+  plan_hull?: string;
+  plan_wiki?: string;
   // Carrier enrichment
   wiki?: string;
   homeport?: string;
