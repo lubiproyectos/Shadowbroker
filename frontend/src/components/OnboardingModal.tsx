@@ -100,8 +100,8 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                     <Shield size={20} className="text-cyan-400" />
                                 </div>
                                 <div>
-                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">MISSION BRIEFING</h2>
-                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">FIRST-TIME SETUP</span>
+                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">MISIÓN INFORMATIVA</h2>
+                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">CONFIGURACIÓN INICIAL</span>
                                 </div>
                             </div>
                             <button
@@ -115,7 +115,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
 
                     {/* Step Indicators */}
                     <div className="flex gap-2 px-6 pt-4">
-                        {["Welcome", "API Keys", "Free Sources"].map((label, i) => (
+                        {["Bienvenida", "Claves API", "Fuentes gratuitas"].map((label, i) => (
                             <button
                                 key={label}
                                 onClick={() => setStep(i)}
@@ -139,8 +139,8 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                         S H A D O W <span className="text-cyan-400">B R O K E R</span>
                                     </div>
                                     <p className="text-[11px] text-[var(--text-secondary)] font-mono leading-relaxed max-w-md mx-auto">
-                                        Real-time OSINT dashboard aggregating 12+ live intelligence sources.
-                                        Flights, ships, satellites, earthquakes, conflicts, and more — all on one map.
+                                        Panel OSINT en tiempo real con 12+ fuentes de inteligencia en vivo.
+                                        Vuelos, buques, satélites, terremotos, conflictos y más — todo en un mapa.
                                     </p>
                                 </div>
 
@@ -148,10 +148,10 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                     <div className="flex items-start gap-2">
                                         <Key size={14} className="text-yellow-500 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <p className="text-[11px] text-yellow-400 font-mono font-bold mb-1">API Keys Required</p>
+                                            <p className="text-[11px] text-yellow-400 font-mono font-bold mb-1">Claves API requeridas</p>
                                             <p className="text-[10px] text-[var(--text-secondary)] font-mono leading-relaxed">
-                                                Two API keys are needed for full functionality: <span className="text-cyan-400">OpenSky Network</span> (flights) and <span className="text-blue-400">AIS Stream</span> (ships).
-                                                Both are free. Without them, some panels will show no data.
+                                                Se necesitan dos claves API para funcionalidad completa: <span className="text-cyan-400">OpenSky Network</span> (vuelos) y <span className="text-blue-400">AIS Stream</span> (buques).
+                                                Ambas son gratuitas. Sin ellas, algunos paneles no mostrarán datos.
                                             </p>
                                         </div>
                                     </div>
@@ -161,9 +161,9 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                     <div className="flex items-start gap-2">
                                         <Globe size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
                                         <div>
-                                            <p className="text-[11px] text-green-400 font-mono font-bold mb-1">8 Sources Work Immediately</p>
+                                            <p className="text-[11px] text-green-400 font-mono font-bold mb-1">8 Fuentes activas de inmediato</p>
                                             <p className="text-[10px] text-[var(--text-secondary)] font-mono leading-relaxed">
-                                                Military aircraft, satellites, earthquakes, global conflicts, weather radar, radio scanners, news, and market data all work out of the box — no keys needed.
+                                                Aeronaves militares, satélites, terremotos, conflictos globales, radar meteorológico, escáneres de radio, noticias y datos de mercado funcionan sin configuración — no se requieren claves.
                                             </p>
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                             <div className="flex items-center gap-2">
                                                 {api.icon}
                                                 <span className="text-xs font-mono text-white font-bold">{api.name}</span>
-                                                <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-yellow-500/30 text-yellow-400 bg-yellow-950/20">REQUIRED</span>
+                                                <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-yellow-500/30 text-yellow-400 bg-yellow-950/20">REQUERIDO</span>
                                             </div>
                                             <a
                                                 href={api.url}
@@ -187,7 +187,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                                 rel="noopener noreferrer"
                                                 className={`text-[10px] font-mono text-${api.color}-400 hover:text-${api.color}-300 flex items-center gap-1 transition-colors`}
                                             >
-                                                GET KEY <ExternalLink size={10} />
+                                                OBTENER CLAVE <ExternalLink size={10} />
                                             </a>
                                         </div>
                                         <p className="text-[10px] text-[var(--text-secondary)] font-mono mb-3">{api.description}</p>
@@ -207,7 +207,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                     className="w-full py-3 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition-colors text-[11px] font-mono tracking-widest flex items-center justify-center gap-2"
                                 >
                                     <Key size={14} />
-                                    OPEN SETTINGS TO ENTER KEYS
+                                    ABRIR CONFIGURACIÓN PARA INGRESAR CLAVES
                                 </button>
                             </div>
                         )}
@@ -215,7 +215,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                         {step === 2 && (
                             <div className="space-y-3">
                                 <p className="text-[10px] text-[var(--text-secondary)] font-mono mb-3">
-                                    These data sources are completely free and require no API keys. They activate automatically on launch.
+                                    Estas fuentes de datos son completamente gratuitas y no requieren claves API. Se activan automáticamente al iniciar.
                                 </p>
                                 <div className="grid grid-cols-2 gap-2">
                                     {FREE_SOURCES.map((src) => (
@@ -243,7 +243,7 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                             }`}
                             disabled={step === 0}
                         >
-                            PREV
+                            ANTERIOR
                         </button>
 
                         <div className="flex gap-1.5">
@@ -257,14 +257,14 @@ const OnboardingModal = React.memo(function OnboardingModal({ onClose, onOpenSet
                                 onClick={() => setStep(step + 1)}
                                 className="px-4 py-2 rounded border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 text-[10px] font-mono tracking-widest transition-all"
                             >
-                                NEXT
+                                SIGUIENTE
                             </button>
                         ) : (
                             <button
                                 onClick={handleDismiss}
                                 className="px-4 py-2 rounded bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/30 text-[10px] font-mono tracking-widest transition-all"
                             >
-                                LAUNCH
+                                INICIAR
                             </button>
                         )}
                     </div>
@@ -279,7 +279,7 @@ export function useOnboarding() {
 
     useEffect(() => {
         const done = localStorage.getItem(STORAGE_KEY);
-        if (!done) {
+        if (false) { // onboarding disabled
             setShowOnboarding(true);
         }
     }, []);

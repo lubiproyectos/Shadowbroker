@@ -126,31 +126,30 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
     }, [data?.tracked_flights]);
 
     const layers = [
-        { id: "flights", name: "Commercial Flights", source: "adsb.lol", count: data?.commercial_flights?.length || 0, icon: Plane },
-        { id: "private", name: "Private Flights", source: "adsb.lol", count: data?.private_flights?.length || 0, icon: Plane },
-        { id: "jets", name: "Private Jets", source: "adsb.lol", count: data?.private_jets?.length || 0, icon: Plane },
-        { id: "military", name: "Military Flights", source: "adsb.lol", count: data?.military_flights?.length || 0, icon: AlertTriangle },
-        { id: "tracked", name: "Tracked Aircraft", source: "Plane-Alert DB", count: data?.tracked_flights?.length || 0, icon: Eye },
-        { id: "earthquakes", name: "Earthquakes (24h)", source: "USGS", count: data?.earthquakes?.length || 0, icon: Activity },
-        { id: "satellites", name: "Satellites", source: data?.satellite_source === "celestrak" ? "CelesTrak SGP4" : data?.satellite_source === "tle_api" ? "TLE API · SGP4" : data?.satellite_source === "disk_cache" ? "Cached · SGP4 (est.)" : "CelesTrak SGP4", count: data?.satellites?.length || 0, icon: Satellite },
-        { id: "ships_military", name: "Military / Carriers", source: "AIS Stream", count: militaryShipCount, icon: Ship },
-        { id: "ships_cargo", name: "Cargo / Tankers", source: "AIS Stream", count: cargoShipCount, icon: Ship },
-        { id: "ships_civilian", name: "Civilian Vessels", source: "AIS Stream", count: civilianShipCount, icon: Anchor },
-        { id: "ships_passenger", name: "Cruise / Passenger", source: "AIS Stream", count: passengerShipCount, icon: Anchor },
-        { id: "ships_tracked_yachts", name: "Tracked Yachts", source: "Yacht-Alert DB", count: trackedYachtCount, icon: Eye },
-        { id: "ukraine_frontline", name: "Ukraine Frontline", source: "DeepStateMap", count: data?.frontlines ? 1 : 0, icon: AlertTriangle },
-        { id: "global_incidents", name: "Global Incidents", source: "GDELT", count: data?.gdelt?.length || 0, icon: Activity },
-        { id: "cctv", name: "CCTV Mesh", source: "CCTV Mesh + Street View", count: data?.cctv?.length || 0, icon: Cctv },
-        { id: "gps_jamming", name: "GPS Jamming", source: "ADS-B NACp", count: data?.gps_jamming?.length || 0, icon: Radio },
-        { id: "gibs_imagery", name: "MODIS Terra (Daily)", source: "NASA GIBS", count: null, icon: Globe },
-        { id: "highres_satellite", name: "High-Res Satellite", source: "Esri World Imagery", count: null, icon: Satellite },
-        { id: "kiwisdr", name: "KiwiSDR Receivers", source: "KiwiSDR.com", count: data?.kiwisdr?.length || 0, icon: Radio },
-        { id: "firms", name: "Fire Hotspots (24h)", source: "NASA FIRMS VIIRS", count: data?.firms_fires?.length || 0, icon: Flame },
-        { id: "internet_outages", name: "Internet Outages", source: "IODA / Georgia Tech", count: data?.internet_outages?.length || 0, icon: Wifi },
-        { id: "datacenters", name: "Data Centers", source: "DC Map (GitHub)", count: data?.datacenters?.length || 0, icon: Server },
-        { id: "power_plants", name: "Power Plants", source: "WRI (Static)", count: data?.power_plants?.length || 0, icon: Zap },
-        { id: "military_bases", name: "Military Bases", source: "OSINT (Static)", count: data?.military_bases?.length || 0, icon: Shield },
-        { id: "day_night", name: "Day / Night Cycle", source: "Solar Calc", count: null, icon: Sun },
+        { id: "flights", name: "Vuelos Comerciales", source: "adsb.lol", count: data?.commercial_flights?.length || 0, icon: Plane },
+        { id: "private", name: "Vuelos Privados", source: "adsb.lol", count: data?.private_flights?.length || 0, icon: Plane },
+        { id: "jets", name: "Jets Privados", source: "adsb.lol", count: data?.private_jets?.length || 0, icon: Plane },
+        { id: "military", name: "Vuelos Militares", source: "adsb.lol", count: data?.military_flights?.length || 0, icon: AlertTriangle },
+        { id: "tracked", name: "Aeronaves Vigiladas", source: "Plane-Alert DB", count: data?.tracked_flights?.length || 0, icon: Eye },
+        { id: "earthquakes", name: "Terremotos (24h)", source: "USGS", count: data?.earthquakes?.length || 0, icon: Activity },
+        { id: "satellites", name: "Satélites", source: data?.satellite_source === "celestrak" ? "CelesTrak SGP4" : data?.satellite_source === "tle_api" ? "TLE API · SGP4" : data?.satellite_source === "disk_cache" ? "Cached · SGP4 (est.)" : "CelesTrak SGP4", count: data?.satellites?.length || 0, icon: Satellite },
+        { id: "ships_military", name: "Militares / Portaaviones", source: "AIS Stream", count: militaryShipCount, icon: Ship },
+        { id: "ships_cargo", name: "Carga / Petroleros", source: "AIS Stream", count: cargoShipCount, icon: Ship },
+        { id: "ships_civilian", name: "Buques Civiles", source: "AIS Stream", count: civilianShipCount, icon: Anchor },
+        { id: "ships_passenger", name: "Cruceros / Pasajeros", source: "AIS Stream", count: passengerShipCount, icon: Anchor },
+        { id: "ships_tracked_yachts", name: "Yates Vigilados", source: "Yacht-Alert DB", count: trackedYachtCount, icon: Eye },
+        { id: "ukraine_frontline", name: "Frente de Ucrania", source: "DeepStateMap", count: data?.frontlines ? 1 : 0, icon: AlertTriangle },
+        { id: "global_incidents", name: "Incidentes Globales", source: "GDELT", count: data?.gdelt?.length || 0, icon: Activity },
+        { id: "gps_jamming", name: "Interferencia GPS", source: "ADS-B NACp", count: data?.gps_jamming?.length || 0, icon: Radio },
+        { id: "gibs_imagery", name: "MODIS Terra (Diario)", source: "NASA GIBS", count: null, icon: Globe },
+        { id: "highres_satellite", name: "Satélite Alta Resolución", source: "Esri World Imagery", count: null, icon: Satellite },
+        { id: "kiwisdr", name: "Receptores KiwiSDR", source: "KiwiSDR.com", count: data?.kiwisdr?.length || 0, icon: Radio },
+        { id: "firms", name: "Focos de Incendio (24h)", source: "NASA FIRMS VIIRS", count: data?.firms_fires?.length || 0, icon: Flame },
+        { id: "internet_outages", name: "Cortes de Internet", source: "IODA / Georgia Tech", count: data?.internet_outages?.length || 0, icon: Wifi },
+        { id: "datacenters", name: "Centros de Datos", source: "DC Map (GitHub)", count: data?.datacenters?.length || 0, icon: Server },
+        { id: "power_plants", name: "Centrales Eléctricas", source: "WRI (Static)", count: data?.power_plants?.length || 0, icon: Zap },
+        { id: "military_bases", name: "Bases Militares", source: "OSINT (Static)", count: data?.military_bases?.length || 0, icon: Shield },
+        { id: "day_night", name: "Ciclo Día / Noche", source: "Solar Calc", count: null, icon: Sun },
     ];
 
     const shipIcon = <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" /><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76" /><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" /></svg>;
@@ -164,46 +163,41 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
         >
             {/* Header */}
             <div className="mb-6 pointer-events-auto">
-                <div className="text-[10px] text-[var(--text-secondary)] font-mono tracking-widest mb-1">TOP SECRET // SI-TK // NOFORN</div>
-                <div className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest mb-4">KH11-4094 OPS-4168</div>
+                <div className="text-[10px] text-[var(--text-secondary)] font-mono tracking-widest mb-1">FUENTES ABIERTAS // ANÁLISIS // VIGILANCIA</div>
+                <div className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest mb-4">IBG-OSINT-2026</div>
                 <div className="flex items-center gap-3">
-                    <h1 className="text-2xl font-bold tracking-[0.2em] text-[var(--text-heading)]">FLIR</h1>
+                    <h1 className="text-2xl font-bold tracking-[0.2em] text-[var(--text-heading)]">VISOR</h1>
                     <button
                         onClick={toggleTheme}
                         className={`w-7 h-7 rounded-lg border border-[var(--border-primary)] hover:border-cyan-500/50 flex items-center justify-center ${theme === 'dark' ? 'text-cyan-400' : 'text-[var(--text-muted)]'} hover:text-cyan-300 transition-all hover:bg-[var(--hover-accent)]`}
-                        title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                        title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
                     >
                         {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
                     </button>
+                    {/*
                     <button
-                        onClick={cycleHudColor}
-                        className={`w-7 h-7 rounded-lg border border-[var(--border-primary)] hover:border-cyan-500/50 flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-all hover:bg-[var(--hover-accent)]`}
-                        title={hudColor === 'cyan' ? 'Switch to Matrix HUD' : 'Switch to Cyan HUD'}
+                        onClick={onSettingsClick}
+                        className={`w-7 h-7 rounded-lg border border-[var(--border-primary)] hover:border-cyan-500/50 flex items-center justify-center ${theme === 'dark' ? 'text-cyan-400' : 'text-[var(--text-muted)]'} hover:text-cyan-300 transition-all hover:bg-[var(--hover-accent)] group`}
+                        title="Configuración del sistema"
                     >
-                        <Palette size={14} />
+                        <Settings size={14} className="group-hover:rotate-90 transition-transform duration-300" />
                     </button>
-                    {onSettingsClick && (
-                        <button
-                            onClick={onSettingsClick}
-                            className={`w-7 h-7 rounded-lg border border-[var(--border-primary)] hover:border-cyan-500/50 flex items-center justify-center ${theme === 'dark' ? 'text-cyan-400' : 'text-[var(--text-muted)]'} hover:text-cyan-300 transition-all hover:bg-[var(--hover-accent)] group`}
-                            title="System Settings"
-                        >
-                            <Settings size={14} className="group-hover:rotate-90 transition-transform duration-300" />
-                        </button>
-                    )}
+                    */}
                     {onLegendClick && (
                         <button
                             onClick={onLegendClick}
                             className={`h-7 px-2 rounded-lg border border-[var(--border-primary)] hover:border-cyan-500/50 flex items-center justify-center gap-1 ${theme === 'dark' ? 'text-cyan-400' : 'text-[var(--text-muted)]'} hover:text-cyan-300 transition-all hover:bg-[var(--hover-accent)]`}
-                            title="Map Legend / Icon Key"
+                            title="Leyenda del mapa / Iconos"
                         >
                             <BookOpen size={12} />
-                            <span className="text-[8px] font-mono tracking-widest font-bold">KEY</span>
+                            <span className="text-[8px] font-mono tracking-widest font-bold">LEYENDA</span>
                         </button>
                     )}
+                    {/*
                     <span className={`h-7 px-2 rounded-lg border border-[var(--border-primary)] flex items-center justify-center text-[8px] ${theme === 'dark' ? 'text-cyan-400' : 'text-[var(--text-muted)]'} font-mono tracking-widest select-none`}>
                         v{packageJson.version}
                     </span>
+                    */}
                 </div>
             </div>
 
@@ -214,10 +208,10 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                 <div
                     className="flex justify-between items-center p-4 cursor-pointer hover:bg-[var(--bg-secondary)]/50 transition-colors border-b border-[var(--border-primary)]/50"
                 >
-                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest" onClick={() => setIsMinimized(!isMinimized)}>DATA LAYERS</span>
+                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest" onClick={() => setIsMinimized(!isMinimized)}>CAPAS DE DATOS</span>
                     <div className="flex items-center gap-2">
                         <button
-                            title={Object.entries(activeLayers).filter(([k]) => k !== 'gibs_imagery').every(([, v]) => v) ? "Disable all layers" : "Enable all layers"}
+                            title={Object.entries(activeLayers).filter(([k]) => k !== 'gibs_imagery').every(([, v]) => v) ? "Desactivar todas las capas" : "Activar todas las capas"}
                             className={`${Object.entries(activeLayers).filter(([k]) => k !== 'gibs_imagery').every(([, v]) => v) ? 'text-cyan-400' : 'text-[var(--text-muted)]'} hover:text-cyan-400 transition-colors`}
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -254,17 +248,17 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
                                                 <Radio size={14} className="text-amber-400" />
-                                                <span className="text-[10px] text-amber-400 font-mono tracking-widest font-bold">SDR TRACKER</span>
+                                                <span className="text-[10px] text-amber-400 font-mono tracking-widest font-bold">RASTREADOR SDR</span>
                                                 <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 animate-pulse">
-                                                    LIVE
+                                                    EN VIVO
                                                 </span>
                                             </div>
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); setTrackedSdr?.(null); }}
                                                 className="text-[8px] font-mono text-[var(--text-muted)] hover:text-red-400 border border-[var(--border-primary)] hover:border-red-400/40 rounded px-1.5 py-0.5 transition-colors"
-                                                title="Release SDR and clear tracking"
+                                                title="Liberar SDR y limpiar rastreo"
                                             >
-                                                RELEASE
+                                                LIBERAR
                                             </button>
                                         </div>
                                         <div className="flex flex-col gap-2">
@@ -282,7 +276,7 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                                         className="flex-1 text-center px-2 py-1.5 rounded border border-[var(--border-primary)] hover:border-amber-400/50 hover:text-amber-400 text-[var(--text-muted)] text-[9px] font-mono tracking-widest transition-colors flex items-center justify-center gap-1.5"
                                                         title="Pan camera to SDR location"
                                                     >
-                                                        <Globe size={10} /> RE-LOCK
+                                                        <Globe size={10} /> RE-BLOQUEAR
                                                     </button>
                                                     {trackedSdr.url && (
                                                         <a
@@ -291,7 +285,7 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                                             rel="noopener noreferrer"
                                                             className="flex-1 text-center px-2 py-1.5 rounded border border-amber-500/50 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 hover:border-amber-400 text-[9px] font-mono tracking-widest transition-colors flex items-center justify-center gap-1.5"
                                                         >
-                                                            <Activity size={10} /> TUNER
+                                                            <Activity size={10} /> SINTONIZADOR
                                                         </a>
                                                     )}
                                                 </div>
@@ -306,17 +300,17 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
                                                 <Shield size={14} className="text-[#ff1493]" />
-                                                <span className="text-[10px] text-[#ff1493] font-mono tracking-widest font-bold">POTUS FLEET</span>
+                                                <span className="text-[10px] text-[#ff1493] font-mono tracking-widest font-bold">FLOTA PRESIDENCIAL</span>
                                                 <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#ff1493]/20 border border-[#ff1493]/40 text-[#ff1493] animate-pulse">
-                                                    {potusFlights.length} ACTIVE
+                                                    {potusFlights.length} ACTIVAS
                                                 </span>
                                             </div>
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); setPotusEnabled(false); }}
                                                 className="text-[8px] font-mono text-[var(--text-muted)] hover:text-[#ff1493] border border-[var(--border-primary)] hover:border-[#ff1493]/40 rounded px-1.5 py-0.5 transition-colors"
-                                                title="Hide POTUS Fleet tracker"
+                                                title="Ocultar rastreador de flota presidencial"
                                             >
-                                                HIDE
+                                                OCULTAR
                                             </button>
                                         </div>
                                         <div className="flex flex-col gap-2">
@@ -346,7 +340,7 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                                         </div>
                                                         <div className="flex items-center gap-1.5">
                                                             <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: color }} />
-                                                            <span className="text-[8px] font-mono" style={{ color }}>TRACK</span>
+                                                            <span className="text-[8px] font-mono" style={{ color }}>RASTREAR</span>
                                                         </div>
                                                     </div>
                                                 );
@@ -375,7 +369,7 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                                             const fKey = FRESHNESS_MAP[layer.id];
                                                             const freshness = fKey && data?.freshness?.[fKey];
                                                             const rt = freshness ? relativeTime(freshness) : '';
-                                                            return rt ? <span className="text-cyan-500/70">{rt}</span> : 'LIVE';
+                                                            return rt ? <span className="text-cyan-500/70">{rt}</span> : 'EN VIVO';
                                                         })() : 'OFF'}</span>
                                                     </div>
                                                 </div>
@@ -387,7 +381,7 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                                         ? 'border-cyan-500/50 text-cyan-400 bg-cyan-950/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]'
                                                         : 'border-[var(--border-primary)] text-[var(--text-muted)] bg-transparent'
                                                         }`}>
-                                                        {active ? 'ON' : 'OFF'}
+                                                        {active ? 'ACT' : 'DES'}
                                                     </div>
                                                 </div>
                                             </div>
@@ -447,17 +441,17 @@ const WorldviewLeftPanel = React.memo(function WorldviewLeftPanel({ data, active
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
                                                 <Shield size={14} className="text-[var(--text-muted)]" />
-                                                <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">POTUS FLEET</span>
+                                                <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">FLOTA PRESIDENCIAL</span>
                                             </div>
                                             {!potusEnabled ? (
                                                 <button
                                                     onClick={(e) => { e.stopPropagation(); setPotusEnabled(true); }}
                                                     className="text-[8px] font-mono text-[var(--text-muted)] hover:text-[#ff1493] border border-[var(--border-primary)] hover:border-[#ff1493]/40 rounded px-1.5 py-0.5 transition-colors"
                                                 >
-                                                    SHOW
+                                                    MOSTRAR
                                                 </button>
                                             ) : (
-                                                <span className="text-[8px] font-mono text-[var(--text-muted)]">NO ACTIVE AIRCRAFT</span>
+                                                <span className="text-[8px] font-mono text-[var(--text-muted)]">SIN AERONAVES ACTIVAS</span>
                                             )}
                                         </div>
                                     </div>

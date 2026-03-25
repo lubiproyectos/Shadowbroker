@@ -49,7 +49,7 @@ const WorldviewRightPanel = React.memo(function WorldviewRightPanel({ effects, s
                     className="flex justify-between items-center p-4 cursor-pointer hover:bg-[var(--bg-secondary)]/50 transition-colors border-b border-[var(--border-primary)]/50"
                     onClick={() => setIsMinimized(!isMinimized)}
                 >
-                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">DISPLAY CONFIG</span>
+                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">CONFIG. PANTALLA</span>
                     <button className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
                         {isMinimized ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
                     </button>
@@ -74,7 +74,7 @@ const WorldviewRightPanel = React.memo(function WorldviewRightPanel({ effects, s
                                         <span className={`text-[14px] ${effects.bloom ? 'text-yellow-500' : 'text-[var(--text-muted)]'}`}>✧</span>
                                         <span className={`text-xs font-mono tracking-widest ${effects.bloom ? 'text-[var(--text-primary)]' : 'text-[var(--text-muted)]'}`}>BLOOM</span>
                                     </div>
-                                    <span className="text-[9px] font-mono tracking-wider text-[var(--text-muted)]">{effects.bloom ? 'ON' : 'OFF'}</span>
+                                    <span className="text-[9px] font-mono tracking-wider text-[var(--text-muted)]">{effects.bloom ? 'ACT' : 'DES'}</span>
                                 </div>
 
                                 {/* Sharpen Slider */}
@@ -84,7 +84,7 @@ const WorldviewRightPanel = React.memo(function WorldviewRightPanel({ effects, s
                                         <span className="w-3 h-3 rounded-full border border-cyan-400 flex items-center justify-center relative">
                                             <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
                                         </span>
-                                        <span className="text-xs font-mono tracking-widest text-cyan-400 font-bold">SHARPEN</span>
+                                        <span className="text-xs font-mono tracking-widest text-cyan-400 font-bold">NITIDEZ</span>
                                     </div>
                                     <div className="flex items-center justify-between gap-3 mt-1">
                                         <div className="h-0.5 bg-[var(--border-primary)] flex-1 relative rounded-full">
@@ -103,9 +103,9 @@ const WorldviewRightPanel = React.memo(function WorldviewRightPanel({ effects, s
                                     </div>
 
                                     <div className="flex items-center justify-between border border-[var(--border-primary)] rounded px-4 py-2 mt-1 bg-[var(--bg-primary)]/50">
-                                        <span className="text-[10px] text-[var(--text-muted)] font-mono">LAYOUT</span>
+                                        <span className="text-[10px] text-[var(--text-muted)] font-mono">DISEÑO</span>
                                         <span className="text-xs text-[var(--text-primary)] tracking-widest border-b border-dashed border-[var(--border-secondary)] pb-0.5 cursor-pointer flex items-center gap-2">
-                                            Tactical
+                                            Táctico
                                         </span>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@ const WorldviewRightPanel = React.memo(function WorldviewRightPanel({ effects, s
                                     className="w-full border border-red-900/30 bg-red-950/10 rounded py-3 mt-2 text-[10px] font-mono tracking-widest text-red-500 hover:text-white hover:bg-red-900 hover:border-red-600 transition-all font-bold"
                                     onClick={() => setUiVisible(false)}
                                 >
-                                    CLEAR UI (TACTICAL MODE)
+                                    LIMPIAR UI (MODO TÁCTICO)
                                 </button>
                             </div>
                         </motion.div>

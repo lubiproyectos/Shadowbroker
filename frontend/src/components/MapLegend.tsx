@@ -60,156 +60,156 @@ const clusterCircle = (fill: string, stroke: string, size = 16) =>
 
 const LEGEND: LegendCategory[] = [
     {
-        name: "COMMERCIAL AVIATION",
+        name: "AVIACIÓN COMERCIAL",
         color: "text-cyan-400 border-cyan-500/30",
         items: [
-            { svg: airliner("cyan"), label: "Airliner (swept wings)" },
-            { svg: turboprop("cyan"), label: "Turboprop (straight wings)" },
-            { svg: heli("cyan"), label: "Helicopter (rotor disc)" },
-            { svg: airliner("#555"), label: "Grounded / Parked (grey)" },
+            { svg: airliner("cyan"), label: "Avión de línea (alas en flecha)" },
+            { svg: turboprop("cyan"), label: "Turbohélice (alas rectas)" },
+            { svg: heli("cyan"), label: "Helicóptero (disco del rotor)" },
+            { svg: airliner("#555"), label: "En tierra / Estacionado (gris)" },
         ],
     },
     {
-        name: "PRIVATE AVIATION",
+        name: "AVIACIÓN PRIVADA",
         color: "text-orange-400 border-orange-500/30",
         items: [
-            { svg: airliner("#FF8C00"), label: "Private Flight — Airliner" },
-            { svg: turboprop("#FF8C00"), label: "Private Flight — Turboprop" },
-            { svg: heli("#FF8C00"), label: "Private Flight — Helicopter" },
+            { svg: airliner("#FF8C00"), label: "Vuelo privado — Avión de línea" },
+            { svg: turboprop("#FF8C00"), label: "Vuelo privado — Turbohélice" },
+            { svg: heli("#FF8C00"), label: "Vuelo privado — Helicóptero" },
         ],
     },
     {
-        name: "PRIVATE JETS",
+        name: "JETS PRIVADOS",
         color: "text-purple-400 border-purple-500/30",
         items: [
-            { svg: bizjet("#9B59B6"), label: "Private Jet — Bizjet" },
-            { svg: airliner("#9B59B6"), label: "Private Jet — Airliner" },
-            { svg: turboprop("#9B59B6"), label: "Private Jet — Turboprop" },
+            { svg: bizjet("#9B59B6"), label: "Jet privado — Bizjet" },
+            { svg: airliner("#9B59B6"), label: "Jet privado — Avión de línea" },
+            { svg: turboprop("#9B59B6"), label: "Jet privado — Turbohélice" },
         ],
     },
     {
-        name: "MILITARY AVIATION",
+        name: "AVIACIÓN MILITAR",
         color: "text-yellow-400 border-yellow-500/30",
         items: [
-            { svg: airliner("yellow"), label: "Military — Standard" },
-            { svg: plane("yellow"), label: "Fighter / Interceptor" },
-            { svg: heli("yellow"), label: "Military — Helicopter" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="orange" stroke="black"><path d="M12 2L15 8H9L12 2Z" /><rect x="8" y="8" width="8" height="2" /><path d="M4 10L10 14H14L20 10V12L14 16H10L4 12V10Z" /><circle cx="12" cy="14" r="2" fill="red"/></svg>`, label: "UAV / Drone (live ADS-B)" },
+            { svg: airliner("yellow"), label: "Militar — Estándar" },
+            { svg: plane("yellow"), label: "Caza / Interceptor" },
+            { svg: heli("yellow"), label: "Militar — Helicóptero" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="orange" stroke="black"><path d="M12 2L15 8H9L12 2Z" /><rect x="8" y="8" width="8" height="2" /><path d="M4 10L10 14H14L20 10V12L14 16H10L4 12V10Z" /><circle cx="12" cy="14" r="2" fill="red"/></svg>`, label: "UAV / Dron (ADS-B en vivo)" },
         ],
     },
     {
-        name: "TRACKED AIRCRAFT (ALERT)",
+        name: "AERONAVES RASTREADAS (ALERTA)",
         color: "text-pink-400 border-pink-500/30",
         items: [
-            { svg: airliner("#FF1493"), label: "VIP / Celebrity / Bizjet (hot pink)" },
-            { svg: airliner("#FF2020"), label: "Dictator / Oligarch (red)" },
-            { svg: airliner("#3b82f6"), label: "Government / Police / Customs (blue)" },
-            { svg: heli("#32CD32"), label: "Medical / Fire / Rescue (lime)" },
-            { svg: airliner("yellow"), label: "Military / Intelligence (yellow)" },
-            { svg: airliner("#222"), label: "PIA — Privacy / Stealth (black)" },
-            { svg: airliner("#FF8C00"), label: "Private Flights / Joe Cool (orange)" },
-            { svg: airliner("white"), label: "Climate Crisis (white)" },
-            { svg: airliner("#9B59B6"), label: "Private Jets / Historic / Other (purple)" },
+            { svg: airliner("#FF1493"), label: "VIP / Celebridad / Bizjet (rosa intenso)" },
+            { svg: airliner("#FF2020"), label: "Dictador / Oligarca (rojo)" },
+            { svg: airliner("#3b82f6"), label: "Gobierno / Policía / Aduanas (azul)" },
+            { svg: heli("#32CD32"), label: "Sanitario / Bomberos / Rescate (verde lima)" },
+            { svg: airliner("yellow"), label: "Militar / Inteligencia (amarillo)" },
+            { svg: airliner("#222"), label: "PIA — Privacidad / Sigilo (negro)" },
+            { svg: airliner("#FF8C00"), label: "Vuelos privados / Joe Cool (naranja)" },
+            { svg: airliner("white"), label: "Crisis climática (blanco)" },
+            { svg: airliner("#9B59B6"), label: "Jets privados / Históricos / Otros (púrpura)" },
         ],
     },
     {
-        name: "POTUS FLEET",
+        name: "FLOTA PRESIDENCIAL",
         color: "text-yellow-400 border-yellow-500/30",
         items: [
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="4 2"/><g transform="translate(6,6)"><path d="M12 2C11.2 2 10.5 2.8 10.5 3.5V8.5L3 13V15L10.5 12.5V18L8 19.5V21L12 19.5L16 21V19.5L13.5 18V12.5L21 15V13L13.5 8.5V3.5C13.5 2.8 12.8 2 12 2Z" fill="#FF1493" stroke="black" stroke-width="0.5"/></g></svg>`, label: "Air Force One / Two (gold ring)" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="4 2"/><g transform="translate(8,6)"><path d="M10 6L10 14L8 16L8 18L10 17L12 22L14 17L16 18L16 16L14 14L14 6C14 4 13 2 12 2C11 2 10 4 10 6Z" fill="#FF1493" stroke="black" stroke-width="0.5"/></g></svg>`, label: "Marine One (gold ring + heli)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="4 2"/><g transform="translate(6,6)"><path d="M12 2C11.2 2 10.5 2.8 10.5 3.5V8.5L3 13V15L10.5 12.5V18L8 19.5V21L12 19.5L16 21V19.5L13.5 18V12.5L21 15V13L13.5 8.5V3.5C13.5 2.8 12.8 2 12 2Z" fill="#FF1493" stroke="black" stroke-width="0.5"/></g></svg>`, label: "Air Force One / Two (anillo dorado)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="gold" stroke-width="2" stroke-dasharray="4 2"/><g transform="translate(8,6)"><path d="M10 6L10 14L8 16L8 18L10 17L12 22L14 17L16 18L16 16L14 14L14 6C14 4 13 2 12 2C11 2 10 4 10 6Z" fill="#FF1493" stroke="black" stroke-width="0.5"/></g></svg>`, label: "Marine One (anillo dorado + heli)" },
         ],
     },
     {
-        name: "SATELLITES",
+        name: "SATÉLITES",
         color: "text-sky-400 border-sky-500/30",
         items: [
-            { svg: sat("#ff3333"), label: "Military Recon / SAR (red)" },
-            { svg: sat("#00e5ff"), label: "Synthetic Aperture Radar (cyan)" },
-            { svg: sat("#ffffff"), label: "Signals Intelligence / ELINT (white)" },
-            { svg: sat("#4488ff"), label: "Navigation — GPS / GLONASS / BeiDou (blue)" },
-            { svg: sat("#ff00ff"), label: "Early Warning — Missile Detection (magenta)" },
-            { svg: sat("#44ff44"), label: "Commercial Imaging (green)" },
-            { svg: sat("#ffdd00"), label: "Space Station — ISS / Tiangong (gold)" },
-            { svg: sat("#aaaaaa"), label: "Unclassified / Other (grey)" },
+            { svg: sat("#ff3333"), label: "Reconocimiento militar / SAR (rojo)" },
+            { svg: sat("#00e5ff"), label: "Radar de apertura sintética (cian)" },
+            { svg: sat("#ffffff"), label: "Inteligencia de señales / ELINT (blanco)" },
+            { svg: sat("#4488ff"), label: "Navegación — GPS / GLONASS / BeiDou (azul)" },
+            { svg: sat("#ff00ff"), label: "Alerta temprana — Detección de misiles (magenta)" },
+            { svg: sat("#44ff44"), label: "Imágenes comerciales (verde)" },
+            { svg: sat("#ffdd00"), label: "Estación espacial — ISS / Tiangong (dorado)" },
+            { svg: sat("#aaaaaa"), label: "Sin clasificar / Otros (gris)" },
         ],
     },
     {
-        name: "MARITIME",
+        name: "MARÍTIMO",
         color: "text-blue-400 border-blue-500/30",
         items: [
-            { svg: ship("gray"), label: "Civilian / Unknown Vessel" },
-            { svg: ship("yellow"), label: "Tanker" },
-            { svg: ship("#ff2222"), label: "Military Vessel" },
-            { svg: ship("#3b82f6"), label: "Cargo Ship" },
-            { svg: ship("white"), label: "Cruise / Passenger" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="orange" stroke="black"><polygon points="3,21 21,21 20,4 16,4 16,3 12,3 12,4 4,4" /><rect x="15" y="6" width="3" height="10" /></svg>`, label: "Aircraft Carrier" },
-            { svg: clusterCircle("#3b82f6", "#1d4ed8"), label: "Ship Cluster (count inside)" },
+            { svg: ship("gray"), label: "Buque civil / desconocido" },
+            { svg: ship("yellow"), label: "Petrolero" },
+            { svg: ship("#ff2222"), label: "Buque militar" },
+            { svg: ship("#3b82f6"), label: "Carguero" },
+            { svg: ship("white"), label: "Crucero / Pasajeros" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="orange" stroke="black"><polygon points="3,21 21,21 20,4 16,4 16,3 12,3 12,4 4,4" /><rect x="15" y="6" width="3" height="10" /></svg>`, label: "Portaaviones" },
+            { svg: clusterCircle("#3b82f6", "#1d4ed8"), label: "Agrupación de barcos (cantidad)" },
         ],
     },
     {
-        name: "GEOPHYSICAL",
+        name: "GEOFÍSICO",
         color: "text-orange-400 border-orange-500/30",
         items: [
-            { svg: circle("#ffcc00"), label: "Earthquake (yellow blob, size = magnitude)" },
+            { svg: circle("#ffcc00"), label: "Terremoto (mancha amarilla, tamaño = magnitud)" },
         ],
     },
     {
-        name: "WILDFIRES",
+        name: "INCENDIOS FORESTALES",
         color: "text-red-400 border-red-500/30",
         items: [
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 1C8 7 5 10 5 14a7 7 0 0 0 14 0c0-4-3-7-7-13z" fill="#ff6600" stroke="#ffcc00" stroke-width="1"/></svg>`, label: "Active wildfire / hotspot" },
-            { svg: clusterCircle("#cc0000", "#ff3300"), label: "Fire cluster (grouped hotspots)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 1C8 7 5 10 5 14a7 7 0 0 0 14 0c0-4-3-7-7-13z" fill="#ff6600" stroke="#ffcc00" stroke-width="1"/></svg>`, label: "Incendio activo / foco de calor" },
+            { svg: clusterCircle("#cc0000", "#ff3300"), label: "Agrupación de incendios (focos agrupados)" },
         ],
     },
     {
-        name: "INCIDENTS & INTELLIGENCE",
+        name: "INCIDENTES E INTELIGENCIA",
         color: "text-red-400 border-red-500/30",
         items: [
-            { svg: triangle("#ffaa00"), label: "GDELT / LiveUA event (yellow)" },
-            { svg: triangle("#ff0000"), label: "Violent / Kinetic event (red)" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ffff00" stroke="#ff0000" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>`, label: "Threat Alert (news cluster)" },
+            { svg: triangle("#ffaa00"), label: "Evento GDELT / LiveUA (amarillo)" },
+            { svg: triangle("#ff0000"), label: "Evento violento / cinético (rojo)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ffff00" stroke="#ff0000" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>`, label: "Alerta de amenaza (agrupación de noticias)" },
         ],
     },
     {
-        name: "NEWS & OSINT",
+        name: "NOTICIAS Y OSINT",
         color: "text-cyan-400 border-cyan-500/30",
         items: [
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 40 24"><rect x="1" y="1" width="38" height="22" rx="3" fill="#111" stroke="cyan" stroke-width="1"/><text x="6" y="10" fill="red" font-size="6" font-family="monospace">!! ALERT</text><text x="6" y="17" fill="white" font-size="4" font-family="monospace">News Headline</text></svg>`, label: "Geolocated news alert box" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 40 24"><rect x="1" y="1" width="38" height="22" rx="3" fill="#111" stroke="cyan" stroke-width="1"/><text x="6" y="10" fill="red" font-size="6" font-family="monospace">!! ALERT</text><text x="6" y="17" fill="white" font-size="4" font-family="monospace">News Headline</text></svg>`, label: "Cuadro de alerta de noticias geolocalizada" },
         ],
     },
     {
-        name: "GPS JAMMING / INTERFERENCE",
+        name: "INTERFERENCIA / INHIBICIÓN GPS",
         color: "text-red-400 border-red-500/30",
         items: [
-            { svg: square("#ff0040"), label: "High severity (>75% aircraft degraded)" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="#ff0040" stroke="#000" stroke-width="1" opacity="0.35" rx="2"/></svg>`, label: "Medium severity (50-75% degraded)" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="#ff0040" stroke="#000" stroke-width="1" opacity="0.2" rx="2"/></svg>`, label: "Low severity (25-50% degraded)" },
+            { svg: square("#ff0040"), label: "Severidad alta (>75% aeronaves degradadas)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="#ff0040" stroke="#000" stroke-width="1" opacity="0.35" rx="2"/></svg>`, label: "Severidad media (50-75% degradadas)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" fill="#ff0040" stroke="#000" stroke-width="1" opacity="0.2" rx="2"/></svg>`, label: "Severidad baja (25-50% degradadas)" },
         ],
     },
     {
-        name: "INFRASTRUCTURE",
+        name: "INFRAESTRUCTURA",
         color: "text-purple-400 border-purple-500/30",
         items: [
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><rect x="3" y="3" width="18" height="6" rx="1" fill="#2e1065"/><rect x="3" y="11" width="18" height="6" rx="1" fill="#2e1065"/><circle cx="7" cy="6" r="1" fill="#a78bfa"/><circle cx="7" cy="14" r="1" fill="#a78bfa"/></svg>`, label: "Data Center" },
-            { svg: circle("#888"), label: "Internet Outage Zone (grey)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><rect x="3" y="3" width="18" height="6" rx="1" fill="#2e1065"/><rect x="3" y="11" width="18" height="6" rx="1" fill="#2e1065"/><circle cx="7" cy="6" r="1" fill="#a78bfa"/><circle cx="7" cy="14" r="1" fill="#a78bfa"/></svg>`, label: "Centro de datos" },
+            { svg: circle("#888"), label: "Zona de corte de internet (gris)" },
         ],
     },
     {
-        name: "SURVEILLANCE / CCTV",
+        name: "VIGILANCIA / CCTV",
         color: "text-green-400 border-green-500/30",
         items: [
-            { svg: dot("#22c55e"), label: "Individual CCTV camera (green dot)" },
-            { svg: clusterCircle("#22c55e", "#16a34a"), label: "Camera cluster (count inside)" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="cyan" stroke-width="2"><path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-.894.553H5.652a1 1 0 0 1-.894-.553L2.724 13.447A1 1 0 0 1 3.618 12h3.632M14 12V8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v4a4 4 0 1 0 8 0Z" /></svg>`, label: "CCTV icon (detail view)" },
+            { svg: dot("#22c55e"), label: "Cámara CCTV individual (punto verde)" },
+            { svg: clusterCircle("#22c55e", "#16a34a"), label: "Agrupación de cámaras (cantidad)" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="cyan" stroke-width="2"><path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-.894.553H5.652a1 1 0 0 1-.894-.553L2.724 13.447A1 1 0 0 1 3.618 12h3.632M14 12V8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v4a4 4 0 1 0 8 0Z" /></svg>`, label: "Icono CCTV (vista detalle)" },
         ],
     },
     {
-        name: "OVERLAYS",
+        name: "CAPAS SUPERPUESTAS",
         color: "text-gray-400 border-gray-500/30",
         items: [
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" fill="#0a0e1a" opacity="0.4"/><circle cx="12" cy="12" r="4" fill="#ffd700"/></svg>`, label: "Day / Night terminator" },
-            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="4" stroke="red" stroke-width="2"/><line x1="4" y1="8" x2="20" y2="8" stroke="#ff6600" stroke-width="2"/></svg>`, label: "Ukraine frontline" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" fill="#0a0e1a" opacity="0.4"/><circle cx="12" cy="12" r="4" fill="#ffd700"/></svg>`, label: "Terminador día / noche" },
+            { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="4" stroke="red" stroke-width="2"/><line x1="4" y1="8" x2="20" y2="8" stroke="#ff6600" stroke-width="2"/></svg>`, label: "Línea de frente de Ucrania" },
         ],
     },
 ];
@@ -258,8 +258,8 @@ const MapLegend = React.memo(function MapLegend({ isOpen, onClose }: { isOpen: b
                                     </svg>
                                 </div>
                                 <div>
-                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">MAP LEGEND</h2>
-                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">ICON REFERENCE KEY</span>
+                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">LEYENDA DEL MAPA</h2>
+                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">GUÍA DE REFERENCIA DE ICONOS</span>
                                 </div>
                             </div>
                             <button
@@ -316,7 +316,7 @@ const MapLegend = React.memo(function MapLegend({ isOpen, onClose }: { isOpen: b
                         {/* Footer */}
                         <div className="p-3 border-t border-[var(--border-primary)]/80 flex-shrink-0">
                             <div className="text-[9px] text-[var(--text-muted)] font-mono text-center tracking-wider">
-                                {LEGEND.reduce((sum, c) => sum + c.items.length, 0)} ICON DEFINITIONS ACROSS {LEGEND.length} CATEGORIES
+                                {LEGEND.reduce((sum, c) => sum + c.items.length, 0)} DEFINICIONES DE ICONOS EN {LEGEND.length} CATEGORÍAS
                             </div>
                         </div>
                     </motion.div>

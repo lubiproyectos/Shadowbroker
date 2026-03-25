@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 type Theme = "dark" | "light";
-type HudColor = "cyan" | "matrix";
+type HudColor = "cyan" | "matrix" | "red";
 
 const ThemeContext = createContext<{
   theme: Theme;
@@ -13,13 +13,13 @@ const ThemeContext = createContext<{
 }>({
   theme: "dark",
   toggleTheme: () => {},
-  hudColor: "cyan",
+  hudColor: "red",
   cycleHudColor: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
-  const [hudColor, setHudColor] = useState<HudColor>("cyan");
+  const [hudColor, setHudColor] = useState<HudColor>("red");
 
   useEffect(() => {
     const saved = localStorage.getItem("sb-theme") as Theme | null;
@@ -27,11 +27,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(saved);
       document.documentElement.setAttribute("data-theme", saved);
     }
-    const savedHud = localStorage.getItem("sb-hud-color") as HudColor | null;
-    if (savedHud === "cyan" || savedHud === "matrix") {
-      setHudColor(savedHud);
-      document.documentElement.setAttribute("data-hud", savedHud);
-    }
+    document.documentElement.setAttribute("data-hud", "red");  
   }, []);
 
   const toggleTheme = () => {

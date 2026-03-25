@@ -134,7 +134,7 @@ export default function TopRightControls() {
                         className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-cyan-500/10 border border-cyan-500/40 rounded-md hover:bg-cyan-500/20 transition-all text-[10px] text-cyan-400 font-mono tracking-widest"
                     >
                         <Download size={12} />
-                        AUTO UPDATE
+                        ACTUALIZACIÓN AUTO
                     </button>
 
                     <a
@@ -144,14 +144,14 @@ export default function TopRightControls() {
                         className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-[var(--bg-secondary)]/50 border border-[var(--border-primary)] rounded-md hover:border-[var(--text-muted)] transition-all text-[10px] text-[var(--text-muted)] font-mono tracking-widest"
                     >
                         <ExternalLink size={12} />
-                        MANUAL DOWNLOAD
+                        DESCARGA MANUAL
                     </a>
 
                     <button
                         onClick={() => setUpdateStatus("available")}
                         className="w-full flex items-center justify-center px-3 py-1.5 text-[9px] text-[var(--text-muted)] font-mono tracking-widest hover:text-[var(--text-secondary)] transition-colors"
                     >
-                        CANCEL
+                        CANCELAR
                     </button>
                 </div>
             </div>
@@ -164,7 +164,7 @@ export default function TopRightControls() {
             <div className="bg-[var(--bg-primary)]/95 backdrop-blur-md border border-red-800/60 rounded-lg shadow-[0_4px_30px_rgba(255,0,0,0.1)] overflow-hidden">
                 <div className="px-3 py-2 border-b border-red-900/40">
                     <span className="text-[10px] font-mono tracking-widest text-red-400">
-                        UPDATE FAILED
+                        ACTUALIZACIÓN FALLIDA
                     </span>
                 </div>
                 <div className="p-3 flex flex-col gap-2">
@@ -176,7 +176,7 @@ export default function TopRightControls() {
                         className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-cyan-500/10 border border-cyan-500/40 rounded-md hover:bg-cyan-500/20 transition-all text-[10px] text-cyan-400 font-mono tracking-widest"
                     >
                         <RefreshCw size={12} />
-                        TRY AGAIN
+                        REINTENTAR
                     </button>
                     <a
                         href="https://github.com/BigBodyCobain/Shadowbroker/releases/latest"
@@ -185,7 +185,7 @@ export default function TopRightControls() {
                         className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-[var(--bg-secondary)]/50 border border-[var(--border-primary)] rounded-md hover:border-[var(--text-muted)] transition-all text-[10px] text-[var(--text-muted)] font-mono tracking-widest"
                     >
                         <ExternalLink size={12} />
-                        MANUAL DOWNLOAD
+                        DESCARGA MANUAL
                     </a>
                 </div>
             </div>
@@ -202,7 +202,7 @@ export default function TopRightControls() {
                 className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[var(--bg-primary)]/50 backdrop-blur-md border border-[var(--border-primary)] rounded-lg hover:border-cyan-500/50 hover:bg-[var(--hover-accent)] transition-all text-[10px] text-[var(--text-secondary)] font-mono cursor-pointer"
             >
                 <MessageSquare size={12} className="text-cyan-400 w-3 h-3" />
-                <span className="tracking-widest">DISCUSSIONS</span>
+                <span className="tracking-widest">DISCUSIONES</span>
             </a>
 
             {/* ── Update Available → opens confirmation ── */}
@@ -212,7 +212,7 @@ export default function TopRightControls() {
                     className="flex items-center gap-1.5 px-2.5 py-1.5 bg-green-500/10 backdrop-blur-md border border-green-500/50 rounded-lg hover:bg-green-500/20 transition-all text-[10px] text-green-400 font-mono cursor-pointer shadow-[0_0_15px_rgba(34,197,94,0.3)]"
                 >
                     <Download size={12} className="w-3 h-3" />
-                    <span className="tracking-widest animate-pulse">v{latestVersion} UPDATE!</span>
+                    <span className="tracking-widest animate-pulse">v{latestVersion} ¡ACTUALIZAR!</span>
                 </button>
             )}
 
@@ -221,7 +221,7 @@ export default function TopRightControls() {
                 <>
                     <button className="flex items-center gap-1.5 px-2.5 py-1.5 bg-green-500/10 backdrop-blur-md border border-green-500/50 rounded-lg text-[10px] text-green-400 font-mono shadow-[0_0_15px_rgba(34,197,94,0.3)]">
                         <Download size={12} className="w-3 h-3" />
-                        <span className="tracking-widest">v{latestVersion} UPDATE!</span>
+                        <span className="tracking-widest">v{latestVersion} ¡ACTUALIZAR!</span>
                     </button>
                     {renderConfirmDialog()}
                 </>
@@ -231,7 +231,7 @@ export default function TopRightControls() {
             {updateStatus === "updating" && (
                 <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-cyan-500/10 backdrop-blur-md border border-cyan-500/50 rounded-lg text-[10px] text-cyan-400 font-mono">
                     <RefreshCw size={12} className="w-3 h-3 animate-spin" />
-                    <span className="tracking-widest">DOWNLOADING UPDATE...</span>
+                    <span className="tracking-widest">DESCARGANDO ACTUALIZACIÓN...</span>
                 </div>
             )}
 
@@ -239,7 +239,7 @@ export default function TopRightControls() {
             {updateStatus === "restarting" && (
                 <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-cyan-500/10 backdrop-blur-md border border-cyan-500/50 rounded-lg text-[10px] text-cyan-400 font-mono shadow-[0_0_15px_rgba(0,255,255,0.2)]">
                     <RefreshCw size={12} className="w-3 h-3 animate-spin" />
-                    <span className="tracking-widest animate-pulse">RESTARTING...</span>
+                    <span className="tracking-widest animate-pulse">REINICIANDO...</span>
                 </div>
             )}
 
@@ -251,7 +251,7 @@ export default function TopRightControls() {
                         className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-500/10 backdrop-blur-md border border-red-500/50 rounded-lg hover:bg-red-500/20 transition-all text-[10px] text-red-400 font-mono"
                     >
                         <AlertCircle size={12} className="w-3 h-3" />
-                        <span className="tracking-widest">UPDATE FAILED</span>
+                        <span className="tracking-widest">ACTUALIZACIÓN FALLIDA</span>
                     </button>
                     {renderErrorDialog()}
                 </>
@@ -270,10 +270,10 @@ export default function TopRightControls() {
                     {updateStatus === "error" && <AlertCircle size={12} className="w-3 h-3 text-red-400" />}
 
                     <span className="tracking-widest">
-                        {updateStatus === "checking" ? "CHECKING..." :
-                         updateStatus === "uptodate" ? "UP TO DATE" :
-                         updateStatus === "error" ? "CHECK FAILED" :
-                         "CHECK UPDATES"}
+                        {updateStatus === "checking" ? "VERIFICANDO..." :
+                         updateStatus === "uptodate" ? "AL DÍA" :
+                         updateStatus === "error" ? "VERIFICACIÓN FALLIDA" :
+                         "VERIFICAR ACTUALIZACIONES"}
                     </span>
                 </button>
             )}

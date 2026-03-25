@@ -7,12 +7,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import WorldviewLeftPanel from "@/components/WorldviewLeftPanel";
 
 import NewsFeed from "@/components/NewsFeed";
-import MarketsPanel from "@/components/MarketsPanel";
+// import MarketsPanel from "@/components/MarketsPanel";
 import FilterPanel from "@/components/FilterPanel";
 import FindLocateBar from "@/components/FindLocateBar";
-import TopRightControls from "@/components/TopRightControls";
-import RadioInterceptPanel from "@/components/RadioInterceptPanel";
-import SettingsPanel from "@/components/SettingsPanel";
+// import TopRightControls from "@/components/TopRightControls"; Se comenta para eliminarlo del panel
+// import RadioInterceptPanel from "@/components/RadioInterceptPanel"; Se comenta para eliminarlo del panel
+// import SettingsPanel from "@/components/SettingsPanel";
 import MapLegend from "@/components/MapLegend";
 import ScaleBar from "@/components/ScaleBar";
 import ErrorBoundary from "@/components/ErrorBoundary";
@@ -86,7 +86,7 @@ function LocateBar({ onLocate }: { onLocate: (lat: number, lng: number) => void 
         className="flex items-center gap-1.5 bg-[var(--bg-primary)]/60 backdrop-blur-md border border-[var(--border-primary)] rounded-lg px-3 py-1.5 text-[9px] font-mono tracking-[0.15em] text-[var(--text-muted)] hover:text-cyan-400 hover:border-cyan-800 transition-colors"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        LOCATE
+        UBICAR
       </button>
     );
   }
@@ -100,7 +100,7 @@ function LocateBar({ onLocate }: { onLocate: (lat: number, lng: number) => void 
           value={value}
           onChange={(e) => handleSearch(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Escape') { setOpen(false); setValue(''); setResults([]); } if (e.key === 'Enter' && results.length > 0) handleSelect(results[0]); }}
-          placeholder="Enter coordinates (31.8, 34.8) or place name..."
+          placeholder="Ingresa coordenadas (31.8, 34.8) o nombre del lugar..."
           className="flex-1 bg-transparent text-[10px] text-[var(--text-primary)] font-mono tracking-wider outline-none placeholder:text-[var(--text-muted)]"
         />
         {loading && <div className="w-3 h-3 border border-cyan-500 border-t-transparent rounded-full animate-spin" />}
@@ -139,30 +139,30 @@ export default function Dashboard() {
   const [measurePoints, setMeasurePoints] = useState<{ lat: number; lng: number }[]>([]);
 
   const [activeLayers, setActiveLayers] = useState({
-    flights: true,
-    private: true,
-    jets: true,
+    flights: false,
+    private: false,
+    jets: false,
     military: true,
-    tracked: true,
-    satellites: true,
+    tracked: false,
+    satellites: false,
     ships_military: true,
-    ships_cargo: true,
+    ships_cargo: false,
     ships_civilian: false,
-    ships_passenger: true,
-    ships_tracked_yachts: true,
-    earthquakes: true,
+    ships_passenger: false,
+    ships_tracked_yachts: false,
+    earthquakes: false,
     cctv: false,
-    ukraine_frontline: true,
-    global_incidents: true,
+    ukraine_frontline: false,
+    global_incidents: false,
     day_night: true,
     gps_jamming: true,
     gibs_imagery: false,
     highres_satellite: false,
     kiwisdr: false,
     firms: false,
-    internet_outages: false,
+    internet_outages: true,
     datacenters: false,
-    military_bases: false,
+    military_bases: true,
     power_plants: false,
   });
 
@@ -256,17 +256,18 @@ export default function Dashboard() {
             </div>
             <div className="flex flex-col">
               <h1 className="text-2xl font-bold tracking-[0.4em] text-[var(--text-primary)] flex items-center gap-3" style={{ fontFamily: 'monospace' }}>
-                S H A D O W <span className="text-cyan-400">B R O K E R</span>
+                B E A T R I Z <span className="text-cyan-400">G A L I N D O</span>
               </h1>
-              <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-[0.3em] mt-1 ml-1">GLOBAL THREAT INTERCEPT</span>
+              <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-[0.3em] mt-1 ml-1">PLATAFORMA DE INTELIGENCIA DE FUENTES ABIERTAS</span>
             </div>
           </motion.div>
 
           {/* SYSTEM METRICS TOP LEFT */}
+          {/*
           <div className="absolute top-2 left-6 text-[8px] font-mono tracking-widest text-cyan-500/50 z-[200] pointer-events-none hud-zone">
             OPTIC VIS:113  SRC:180  DENS:1.42  0.8ms
           </div>
-
+        */}
           {/* SYSTEM METRICS TOP RIGHT */}
           <div className="absolute top-2 right-6 text-[9px] flex flex-col items-end font-mono tracking-widest text-[var(--text-muted)] z-[200] pointer-events-none hud-zone">
             <div>RTX</div>
@@ -296,7 +297,7 @@ export default function Dashboard() {
               className="flex flex-col items-center gap-1.5 py-5 px-1.5 bg-cyan-400 border border-cyan-400 border-l-0 rounded-r-md text-black hover:bg-cyan-300 hover:border-cyan-300 transition-colors shadow-[2px_0_12px_rgba(0,0,0,0.4)]"
             >
               {leftOpen ? <ChevronLeft size={10} /> : <ChevronRight size={10} />}
-              <span className="text-[7px] font-mono tracking-[0.2em] font-bold text-black" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>LAYERS</span>
+              <span className="text-[7px] font-mono tracking-[0.2em] font-bold text-black" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>CAPAS</span>
             </button>
           </motion.div>
 
@@ -321,7 +322,7 @@ export default function Dashboard() {
             animate={{ x: rightOpen ? 0 : 360 }}
             transition={{ type: 'spring', damping: 30, stiffness: 250 }}
           >
-            <TopRightControls />
+            {/* <TopRightControls /> Se comenta para eliminar los botones de actualización */}
 
             {/* FIND / LOCATE */}
             <div className="flex-shrink-0">
@@ -343,13 +344,15 @@ export default function Dashboard() {
             </div>
 
             {/* TOP RIGHT - MARKETS */}
+            {/*}
             <div className="flex-shrink-0">
               <ErrorBoundary name="MarketsPanel">
                 <MarketsPanel data={data} />
               </ErrorBoundary>
             </div>
-
+          */}
             {/* SIGINT & RADIO INTERCEPTS */}
+            {/*
             <div className="flex-shrink-0">
               <ErrorBoundary name="RadioInterceptPanel">
                 <RadioInterceptPanel
@@ -362,6 +365,7 @@ export default function Dashboard() {
                 />
               </ErrorBoundary>
             </div>
+            */}
 
             {/* DATA FILTERS */}
             <div className="flex-shrink-0">
@@ -393,7 +397,7 @@ export default function Dashboard() {
             >
               {/* Coordinates */}
               <div className="flex flex-col items-center min-w-[120px]">
-                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">COORDINATES</div>
+                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">COORDENADAS</div>
                 <div className="text-[11px] text-cyan-400 font-mono font-bold tracking-wide">
                   {mouseCoords ? `${mouseCoords.lat.toFixed(4)}, ${mouseCoords.lng.toFixed(4)}` : '0.0000, 0.0000'}
                 </div>
@@ -404,9 +408,9 @@ export default function Dashboard() {
 
               {/* Location name */}
               <div className="flex flex-col items-center min-w-[180px] max-w-[320px]">
-                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">LOCATION</div>
+                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">UBICACIÓN</div>
                 <div className="text-[10px] text-[var(--text-secondary)] font-mono truncate max-w-[320px]">
-                  {locationLabel || 'Hover over map...'}
+                  {locationLabel || 'Mueve el cursor sobre el mapa...'}
                 </div>
               </div>
 
@@ -415,7 +419,7 @@ export default function Dashboard() {
 
               {/* Style preset (compact) */}
               <div className="flex flex-col items-center cursor-pointer" onClick={cycleStyle}>
-                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">STYLE</div>
+                <div className="text-[8px] text-[var(--text-muted)] font-mono tracking-[0.2em]">ESTILO</div>
                 <div className="text-[11px] text-cyan-400 font-mono font-bold">{activeStyle}</div>
               </div>
 
@@ -444,7 +448,7 @@ export default function Dashboard() {
           onClick={() => setUiVisible(true)}
           className="absolute bottom-6 right-6 z-[200] bg-[var(--bg-primary)]/60 backdrop-blur-md border border-[var(--border-primary)] rounded px-4 py-2 text-[10px] font-mono tracking-widest text-cyan-500 hover:text-cyan-300 hover:border-cyan-800 transition-colors pointer-events-auto"
         >
-          RESTORE UI
+          RESTAURAR UI
         </button>
       )}
 
@@ -474,9 +478,10 @@ export default function Dashboard() {
       <div className="absolute inset-0 pointer-events-none z-[3] opacity-5 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)]" style={{ backgroundSize: '100% 4px' }}></div>
 
       {/* SETTINGS PANEL */}
-      <ErrorBoundary name="SettingsPanel">
+      {/*<ErrorBoundary name="SettingsPanel">
         <SettingsPanel isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
       </ErrorBoundary>
+      */}
 
       {/* MAP LEGEND */}
       <ErrorBoundary name="MapLegend">
@@ -500,7 +505,7 @@ export default function Dashboard() {
       {backendStatus === 'disconnected' && (
         <div className="absolute top-0 left-0 right-0 z-[9000] flex items-center justify-center py-2 bg-red-950/90 border-b border-red-500/40 backdrop-blur-sm">
           <span className="text-[10px] font-mono tracking-widest text-red-400">
-            BACKEND OFFLINE — Cannot reach backend server. Check that the backend container is running and BACKEND_URL is correct.
+            BACKEND FUERA DE LÍNEA: No se puede acceder al servidor backend. Compruebe que el contenedor backend esté en funcionamiento y que la URL del backend sea correcta.
           </span>
         </div>
       )}

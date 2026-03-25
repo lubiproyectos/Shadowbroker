@@ -10,56 +10,56 @@ const STORAGE_KEY = `shadowbroker_changelog_v${CURRENT_VERSION}`;
 const NEW_FEATURES = [
     {
         icon: <Zap size={14} className="text-cyan-400" />,
-        title: "Parallelized Boot (15s Cold Start)",
-        desc: "Backend startup now runs fast-tier, slow-tier, and airport data concurrently via ThreadPoolExecutor. Boot time cut from 60s+ to ~15s.",
+        title: "Arranque paralelo (15s de inicio en frío)",
+        desc: "El inicio del backend ahora ejecuta niveles rápido, lento y datos de aeropuertos de forma concurrente via ThreadPoolExecutor. Tiempo de arranque reducido de 60s+ a ~15s.",
         color: "cyan",
     },
     {
         icon: <Shield size={14} className="text-green-400" />,
-        title: "Adaptive Polling + ETag Caching",
-        desc: "Data polling engine rebuilt with adaptive retry (3s startup, 15s steady state) and ETag conditional caching. Map panning no longer interrupts data flow.",
+        title: "Sondeo adaptativo + caché ETag",
+        desc: "Motor de sondeo reconstruido con reintento adaptativo (3s arranque, 15s estado estable) y caché condicional ETag. El desplazamiento del mapa ya no interrumpe el flujo de datos.",
         color: "green",
     },
     {
         icon: <Ship size={14} className="text-blue-400" />,
-        title: "Sliding Edge Panels (LAYERS / INTEL)",
-        desc: "Replaced bulky Record Panel with spring-animated side tabs. LAYERS on the left, INTEL (News, Markets, Radio, Find) on the right. Premium tactical HUD feel.",
+        title: "Paneles deslizantes (CAPAS / INTEL)",
+        desc: "Panel de registro reemplazado por pestañas laterales animadas con spring. CAPAS a la izquierda, INTEL (Noticias, Mercados, Radio, Búsqueda) a la derecha. Sensación HUD táctico premium.",
         color: "blue",
     },
     {
         icon: <Download size={14} className="text-yellow-400" />,
-        title: "Admin Auth + Rate Limiting + Auto-Updater",
-        desc: "Settings and system endpoints protected by X-Admin-Key. All endpoints rate-limited via slowapi. One-click auto-update from GitHub releases with safe backup/restart.",
+        title: "Auth admin + Límite de tasa + Actualizador automático",
+        desc: "Ajustes y endpoints de sistema protegidos por X-Admin-Key. Todos los endpoints con límite de tasa via slowapi. Actualización automática con un clic desde GitHub con backup/reinicio seguro.",
         color: "yellow",
     },
     {
         icon: <Shield size={14} className="text-purple-400" />,
-        title: "Docker Swarm Secrets Support",
-        desc: "Production deployments can now load API keys from /run/secrets/ instead of environment variables. env_check.py enforces warning tiers for missing keys.",
+        title: "Soporte para Docker Swarm Secrets",
+        desc: "Los despliegues en producción ahora pueden cargar claves API desde /run/secrets/ en lugar de variables de entorno. env_check.py aplica niveles de advertencia para claves faltantes.",
         color: "purple",
     },
 ];
 
 const BUG_FIXES = [
-    "Stable entity IDs for GDELT & News popups — no more wrong popup after data refresh (PR #63)",
-    "useCallback optimization for interpolation functions — eliminates redundant React re-renders on every 1s tick",
-    "Restored missing GDELT and datacenter background refreshes in slow-tier loop",
-    "Server-side viewport bounding box filtering reduces JSON payload size by 80%+",
-    "Modular fetcher architecture sustained over monolithic data_fetcher.py",
-    "CCTV ingestors instantiated once at startup — no more fresh DB connections every 10min tick",
+    "IDs de entidad estables para popups de GDELT y Noticias — sin más popups incorrectos tras actualizar datos (PR #63)",
+    "Optimización con useCallback para funciones de interpolación — elimina re-renderizados redundantes de React en cada tick de 1s",
+    "Restauradas las actualizaciones en segundo plano de GDELT y centros de datos en el bucle de nivel lento",
+    "Filtrado de bounding box del viewport en el servidor reduce el tamaño del payload JSON en más del 80%",
+    "Arquitectura de fetcher modular mantenida sobre el monolítico data_fetcher.py",
+    "Ingestores CCTV instanciados una vez al inicio — sin más conexiones DB nuevas cada tick de 10min",
 ];
 
 const CONTRIBUTORS = [
-    { name: "@imqdcr", desc: "Ship toggle split into 4 categories + stable MMSI/callsign entity IDs for map markers" },
-    { name: "@csysp", desc: "Dismissible threat alerts + stable entity IDs for GDELT & News popups", pr: "#48, #63" },
-    { name: "@suranyami", desc: "Parallel multi-arch Docker builds (11min \u2192 3min) + runtime BACKEND_URL fix", pr: "#35, #44" },
+    { name: "@imqdcr", desc: "Toggle de buques dividido en 4 categorías + IDs de entidad MMSI/callsign estables para marcadores del mapa" },
+    { name: "@csysp", desc: "Alertas de amenaza descartables + IDs de entidad estables para popups de GDELT y Noticias", pr: "#48, #63" },
+    { name: "@suranyami", desc: "Builds Docker multi-arch paralelas (11min → 3min) + corrección de BACKEND_URL en tiempo de ejecución", pr: "#35, #44" },
 ];
 
 export function useChangelog() {
     const [show, setShow] = useState(false);
     useEffect(() => {
         const seen = localStorage.getItem(STORAGE_KEY);
-        if (!seen) setShow(true);
+        if (false) setShow(true); // changelog disabled
     }, []);
     return { showChangelog: show, setShowChangelog: setShow };
 }
@@ -105,11 +105,11 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                                         v{CURRENT_VERSION}
                                     </div>
                                     <h2 className="text-sm font-bold tracking-[0.15em] text-[var(--text-primary)] font-mono">
-                                        WHAT&apos;S NEW
+                                        NOVEDADES
                                     </h2>
                                 </div>
                                 <p className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest mt-1">
-                                    SHADOWBROKER INTELLIGENCE PLATFORM UPDATE
+                                    ACTUALIZACIÓN DE LA PLATAFORMA DE INTELIGENCIA
                                 </p>
                             </div>
                             <button
@@ -127,7 +127,7 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                         <div>
                             <div className="text-[9px] font-mono tracking-[0.2em] text-cyan-400 font-bold mb-3 flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                                NEW CAPABILITIES
+                                NUEVAS CAPACIDADES
                             </div>
                             <div className="space-y-2">
                                 {NEW_FEATURES.map((f) => (
@@ -146,7 +146,7 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                         <div>
                             <div className="text-[9px] font-mono tracking-[0.2em] text-green-400 font-bold mb-3 flex items-center gap-2">
                                 <Bug size={10} className="text-green-400" />
-                                FIXES &amp; IMPROVEMENTS
+                                CORRECCIONES Y MEJORAS
                             </div>
                             <div className="space-y-1.5">
                                 {BUG_FIXES.map((fix, i) => (
@@ -162,7 +162,7 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                         <div>
                             <div className="text-[9px] font-mono tracking-[0.2em] text-pink-400 font-bold mb-3 flex items-center gap-2">
                                 <Heart size={10} className="text-pink-400" />
-                                COMMUNITY CONTRIBUTORS
+                                COLABORADORES DE LA COMUNIDAD
                             </div>
                             <div className="space-y-1.5">
                                 {CONTRIBUTORS.map((c, i) => (
@@ -171,7 +171,7 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                                         <div>
                                             <span className="text-[10px] font-mono text-pink-300 font-bold">{c.name}</span>
                                             <span className="text-[9px] font-mono text-[var(--text-muted)]"> — {c.desc}</span>
-                                            <span className="text-[8px] font-mono text-[var(--text-muted)]"> (PR {c.pr})</span>
+                                            {c.pr && <span className="text-[8px] font-mono text-[var(--text-muted)]"> (PR {c.pr})</span>}
                                         </div>
                                     </div>
                                 ))}
@@ -185,7 +185,7 @@ const ChangelogModal = React.memo(function ChangelogModal({ onClose }: Changelog
                             onClick={handleDismiss}
                             className="px-8 py-2.5 rounded-lg bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/25 text-[10px] font-mono tracking-[0.2em] transition-all"
                         >
-                            ACKNOWLEDGED
+                            ENTENDIDO
                         </button>
                     </div>
                 </div>

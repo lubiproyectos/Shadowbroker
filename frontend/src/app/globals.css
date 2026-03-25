@@ -10,8 +10,8 @@
   --border-primary: rgb(10, 12, 15);
   --border-secondary: rgb(20, 24, 28);
   --text-primary: rgb(243, 244, 246);
-  --text-secondary: rgb(34, 211, 238);
-  --text-muted: rgb(8, 145, 178);
+  --text-secondary: #FF4760;
+  --text-muted: #FF4760;
   --text-heading: rgb(236, 254, 255);
   --hover-accent: rgba(8, 51, 68, 0.2);
   --scrollbar-thumb: rgba(8, 145, 178, 0.3);
@@ -29,8 +29,8 @@
   --border-primary: rgb(10, 12, 15);
   --border-secondary: rgb(20, 24, 28);
   --text-primary: rgb(243, 244, 246);
-  --text-secondary: rgb(34, 211, 238);
-  --text-muted: rgb(8, 145, 178);
+  --text-secondary: #FF4760;
+  --text-muted: #FF4760;
   --text-heading: rgb(236, 254, 255);
   --hover-accent: rgba(8, 51, 68, 0.2);
   --scrollbar-thumb: rgba(8, 145, 178, 0.3);
@@ -200,3 +200,37 @@ body {
 .map-focus-active .maplibregl-popup {
   z-index: 10 !important;
 }
+
+/* IBG Red HUD — #FF4760 accent */
+[data-hud="red"] .hud-zone .text-cyan-300 { color: #ff6b7d !important; }
+[data-hud="red"] .hud-zone .text-cyan-400 { color: #FF4760 !important; }
+[data-hud="red"] .hud-zone .text-cyan-500 { color: #e03050 !important; }
+[data-hud="red"] .hud-zone .text-cyan-600 { color: #c02040 !important; }
+[data-hud="red"] .hud-zone .text-cyan-700 { color: #a01030 !important; }
+[data-hud="red"] .hud-zone .text-cyan-500\/50 { color: rgba(255, 71, 96, 0.5) !important; }
+[data-hud="red"] .hud-zone .text-cyan-500\/70 { color: rgba(255, 71, 96, 0.7) !important; }
+[data-hud="red"] .hud-zone .text-cyan-500\/80 { color: rgba(255, 71, 96, 0.8) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-400 { background-color: #FF4760 !important; }
+[data-hud="red"] .hud-zone .bg-cyan-300 { background-color: #ff6b7d !important; }
+[data-hud="red"] .hud-zone .bg-cyan-500 { background-color: #e03050 !important; }
+[data-hud="red"] .hud-zone .bg-cyan-500\/10 { background-color: rgba(255, 71, 96, 0.1) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-500\/20 { background-color: rgba(255, 71, 96, 0.2) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-500\/30 { background-color: rgba(255, 71, 96, 0.3) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-900\/30 { background-color: rgba(80, 10, 20, 0.3) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-900\/50 { background-color: rgba(80, 10, 20, 0.5) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-950\/10 { background-color: rgba(60, 5, 15, 0.1) !important; }
+[data-hud="red"] .hud-zone .bg-cyan-950\/30 { background-color: rgba(60, 5, 15, 0.3) !important; }
+[data-hud="red"] .hud-zone .border-cyan-400 { border-color: #FF4760 !important; }
+[data-hud="red"] .hud-zone .border-cyan-500 { border-color: #e03050 !important; }
+[data-hud="red"] .hud-zone .border-cyan-700 { border-color: #a01030 !important; }
+[data-hud="red"] .hud-zone .border-cyan-800 { border-color: #801020 !important; }
+[data-hud="red"] .hud-zone .border-cyan-900 { border-color: #600010 !important; }
+[data-hud="red"] .hud-zone .border-cyan-500\/10 { border-color: rgba(255, 71, 96, 0.1) !important; }
+[data-hud="red"] .hud-zone .border-cyan-500\/20 { border-color: rgba(255, 71, 96, 0.2) !important; }
+[data-hud="red"] .hud-zone .border-cyan-500\/30 { border-color: rgba(255, 71, 96, 0.3) !important; }
+[data-hud="red"] .hud-zone .border-cyan-500\/40 { border-color: rgba(255, 71, 96, 0.4) !important; }
+[data-hud="red"] .hud-zone .border-cyan-500\/50 { border-color: rgba(255, 71, 96, 0.5) !important; }
+[data-hud="red"] .hud-zone .border-cyan-900\/50 { border-color: rgba(80, 10, 20, 0.5) !important; }
+[data-hud="red"] .hud-zone .hover\:text-cyan-300:hover { color: #ff6b7d !important; }
+[data-hud="red"] .hud-zone .hover\:text-cyan-400:hover { color: #FF4760 !important; }
+[data-hud="red"] .hud-zone .hover\:border-cyan-500\/50:hover { border-color: rgba(255, 71, 96, 0.5) !important; }

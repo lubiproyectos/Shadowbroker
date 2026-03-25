@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WORLDVIEW // ORBITAL TRACKING",
-  description: "Advanced Geopolitical Risk Dashboard",
+  title: "OSINT IBG",
+  description: "Panel de control avanzado sobre riesgos geopolíticos",
 };
 
 export default function RootLayout({

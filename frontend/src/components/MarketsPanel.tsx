@@ -25,7 +25,7 @@ const MarketsPanel = React.memo(function MarketsPanel({ data }: { data: Dashboar
             >
                 <div className="flex items-center gap-2">
                     <Globe size={12} className="text-cyan-500" />
-                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">GLOBAL MARKETS</span>
+                    <span className="text-[10px] text-[var(--text-muted)] font-mono tracking-widest">MERCADOS GLOBALES</span>
                 </div>
                 <button className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
                     {isMinimized ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
@@ -42,7 +42,7 @@ const MarketsPanel = React.memo(function MarketsPanel({ data }: { data: Dashboar
                     >
                         <div className="border-b border-[var(--border-primary)] pb-3">
                             <h2 className="text-xs font-bold tracking-widest text-cyan-400 flex items-center gap-2 mb-2">
-                                <TrendingUp className="text-cyan-500" size={14} /> DEFENSE SEC TICKERS
+                                <TrendingUp className="text-cyan-500" size={14} /> TICKERS SECTOR DEFENSA
                             </h2>
                             <div className="mt-3 flex flex-col gap-2">
                                 {Object.entries(stocks).map(([ticker, info]: [string, any]) => (
@@ -62,7 +62,7 @@ const MarketsPanel = React.memo(function MarketsPanel({ data }: { data: Dashboar
 
                         <div>
                             <h2 className="text-xs font-bold tracking-widest text-cyan-400 flex items-center gap-2 mb-2">
-                                <Droplet className="text-cyan-500" size={14} /> COMMODITY INDEX
+                                <Droplet className="text-cyan-500" size={14} /> ÍNDICE DE MATERIAS PRIMAS
                             </h2>
                             <div className="mt-2 flex flex-col gap-2">
                                 {Object.entries(oil).map(([name, info]: [string, any]) => (

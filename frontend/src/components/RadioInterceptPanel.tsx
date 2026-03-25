@@ -43,7 +43,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                     // Show a temporary state
                     setFeeds(prev => [{
                         id: 'scanning-nearest',
-                        name: 'TRIANGULATING SIGNAL...',
+                        name: 'TRIANGULANDO SEÑAL...',
                         location: `LAT:${eavesdropLocation.lat.toFixed(2)} LNG:${eavesdropLocation.lng.toFixed(2)}`,
                         listeners: 0,
                         category: 'SIGINT'
@@ -65,7 +65,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                         name: `${system.name} (TG:${latest.talkgroupNum})`,
                                         location: `${system.city}, ${system.state}`,
                                         listeners: system.clientCount || 0,
-                                        category: 'TRUNKED INTERCEPT',
+                                        category: 'INTERCEPCIÓN TRONCAL',
                                         stream_url: latest.url
                                     };
 
@@ -84,9 +84,9 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                         const clean = prev.filter(f => f.id !== 'scanning-nearest');
                                         return [{
                                             id: `failed-${Date.now()}`,
-                                            name: `NO RECENT COMMS (${system.shortName})`,
+                                            name: `SIN COMUNICACIONES RECIENTES (${system.shortName})`,
                                             location: `${system.city}, ${system.state}`,
-                                            category: 'DEAD AIR',
+                                            category: 'SILENCIO RADIAL',
                                             listeners: 0
                                         }, ...clean];
                                     });
@@ -98,9 +98,9 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                 const clean = prev.filter(f => f.id !== 'scanning-nearest');
                                 return [{
                                     id: `failed-${Date.now()}`,
-                                    name: 'NO LOCAL REPEATERS FOUND',
-                                    location: 'UNKNOWN',
-                                    category: 'ENCRYPTED / VOID',
+                                    name: 'NO SE ENCONTRARON REPETIDORES LOCALES',
+                                    location: 'DESCONOCIDO',
+                                    category: 'CIFRADO / VACÍO',
                                     listeners: 0
                                 }, ...clean];
                             });
@@ -209,7 +209,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                         name: `${system.name} (TG:${randomCall.talkgroupNum})`,
                                         location: `${system.city}, ${system.state}`,
                                         listeners: system.clientCount || 0,
-                                        category: 'TRUNKED INTERCEPT',
+                                        category: 'INTERCEPCIÓN TRONCAL',
                                         stream_url: randomCall.url
                                     };
 
@@ -258,7 +258,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
             >
                 <div className="flex items-center gap-2 text-[var(--text-muted)]">
                     <RadioReceiver size={14} className={isPlaying ? "animate-pulse" : ""} />
-                    <span className="text-[10px] font-mono tracking-widest">SIGINT INTERCEPT</span>
+                    <span className="text-[10px] font-mono tracking-widest">INTERCEPCIÓN SIGINT</span>
                     {isPlaying && <Activity size={12} className="text-red-500 animate-pulse ml-2" />}
                 </div>
                 <button className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
@@ -279,16 +279,16 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex flex-col">
                                     <span className="text-xs text-cyan-300 font-mono tracking-wide">
-                                        {activeFeed ? activeFeed.name : "NO SIGNAL"}
+                                        {activeFeed ? activeFeed.name : "SIN SEÑAL"}
                                     </span>
                                     <span className="text-[9px] text-[var(--text-muted)] font-mono">
-                                        {activeFeed ? `LOCATION: ${activeFeed.location.toUpperCase()}` : "AWAITING TUNING..."}
+                                        {activeFeed ? `UBICACIÓN: ${activeFeed.location.toUpperCase()}` : "ESPERANDO SINTONIZACIÓN..."}
                                     </span>
                                 </div>
                                 {activeFeed && (
                                     <div className="flex items-center gap-1 bg-red-950/40 border border-red-900/50 px-2 py-0.5 rounded text-[9px] text-red-400 font-mono">
                                         <Activity size={10} className="animate-pulse" />
-                                        LIVE
+                                        EN VIVO
                                     </div>
                                 )}
                             </div>
@@ -306,7 +306,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                     className={`px-3 py-1.5 rounded text-[10px] font-mono border tracking-wider flex items-center gap-2 ${isScanning ? 'bg-cyan-900/60 border-cyan-400 text-cyan-300' : 'border-cyan-800 text-cyan-600 hover:border-cyan-600'} transition-colors`}
                                 >
                                     <FastForward size={12} />
-                                    {isScanning ? 'SCANNING...' : 'AUTO SCAN'}
+                                    {isScanning ? 'ESCANEANDO...' : 'ESCANEO AUTO'}
                                 </button>
 
                                 <button
@@ -314,7 +314,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                     className={`px-3 py-1.5 rounded text-[10px] font-mono border tracking-wider flex items-center gap-2 ${isEavesdropping ? 'bg-red-900/60 border-red-500 text-red-300 animate-pulse' : 'border-cyan-800 text-cyan-600 hover:border-cyan-600'} transition-colors`}
                                     title="Click on the globe to intercept local signals"
                                 >
-                                    EAVESDROP
+                                    INTERCEPTAR
                                 </button>
 
                                 <input
@@ -351,7 +351,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                         {/* Feed List */}
                         <div className="flex-col overflow-y-auto styled-scrollbar max-h-64 p-2">
                             {feeds.length === 0 ? (
-                                <div className="text-[10px] text-cyan-700 font-mono text-center p-4">SEARCHING FREQUENCIES...</div>
+                                <div className="text-[10px] text-cyan-700 font-mono text-center p-4">BUSCANDO FRECUENCIAS...</div>
                             ) : (
                                 feeds.map((feed: RadioFeed, idx: number) => (
                                     <div
@@ -372,7 +372,7 @@ export default function RadioInterceptPanel({ data, isEavesdropping, setIsEavesd
                                                 <Activity size={10} />
                                                 {feed.listeners.toLocaleString()}
                                             </span>
-                                            <span className="text-[8px] text-[var(--text-muted)] font-mono mt-0.5">LSTN</span>
+                                            <span className="text-[8px] text-[var(--text-muted)] font-mono mt-0.5">OYENTES</span>
                                         </div>
                                     </div>
                                 ))

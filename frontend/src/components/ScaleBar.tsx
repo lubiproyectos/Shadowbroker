@@ -114,30 +114,30 @@ function ScaleBar({ zoom, latitude, measureMode, measurePoints, onToggleMeasure,
                     onPointerUp={onPointerUp}
                 >
                     {/* Left tick */}
-                    <div className="w-px h-2.5 bg-cyan-400 flex-shrink-0" />
+                    <div className="w-px h-2.5 bg-[#FF4760] flex-shrink-0" />
                     {/* Bar */}
-                    <div className="flex-1 h-px bg-cyan-400 relative" style={{ boxShadow: "0 0 6px rgba(0,255,255,0.3)" }}>
+                    <div className="flex-1 h-px bg-[#FF4760] relative" style={{ boxShadow: "0 0 6px rgba(255,71,96,0.3)" }}>
                         {/* Graduation marks */}
-                        <div className="absolute left-1/4 top-0 w-px h-1.5 bg-cyan-400/50" />
-                        <div className="absolute left-1/2 top-0 w-px h-2 bg-cyan-400/70" />
-                        <div className="absolute left-3/4 top-0 w-px h-1.5 bg-cyan-400/50" />
+                        <div className="absolute left-1/4 top-0 w-px h-1.5 bg-[#FF4760]/50" />
+                        <div className="absolute left-1/2 top-0 w-px h-2 bg-[#FF4760]/70" />
+                        <div className="absolute left-3/4 top-0 w-px h-1.5 bg-[#FF4760]/50" />
                     </div>
                     {/* Draggable right tick */}
                     <div
-                        className="w-2 h-3 bg-cyan-400/80 rounded-r cursor-ew-resize flex-shrink-0 hover:bg-cyan-300 transition-colors"
+                        className="w-2 h-3 bg-[#FF4760]/80 rounded-r cursor-ew-resize flex-shrink-0 hover:bg-[#FF4760] transition-colors"
                         onPointerDown={onPointerDown}
-                        title="Drag to resize scale"
+                        title="Arrastra para redimensionar la escala"
                         style={{ touchAction: "none" }}
                     />
                 </div>
-                <span className="text-[9px] font-mono text-cyan-300 tracking-widest mt-0.5">{scaleLabel}</span>
+                <span className="text-[9px] font-mono text-[#FF4760] tracking-widest mt-0.5">{scaleLabel}</span>
             </div>
 
             {/* Unit toggle */}
             <button
                 onClick={() => setUnit(u => u === "mi" ? "km" : "mi")}
                 className="text-[8px] font-mono tracking-widest px-1.5 py-0.5 rounded border border-[var(--border-primary)] hover:border-cyan-500/50 text-[var(--text-muted)] hover:text-cyan-400 transition-all hover:bg-cyan-950/20 uppercase"
-                title={`Switch to ${unit === "mi" ? "Metric (km)" : "Imperial (mi)"}`}
+                title={`Cambiar a ${unit === "mi" ? "métrico (km)" : "imperial (mi)"}`}
             >
                 {unit === "mi" ? "MI" : "KM"}
             </button>
@@ -149,10 +149,10 @@ function ScaleBar({ zoom, latitude, measureMode, measurePoints, onToggleMeasure,
                         ? "border-cyan-500/60 text-cyan-400 bg-cyan-950/30 shadow-[0_0_8px_rgba(0,255,255,0.2)]"
                         : "border-[var(--border-primary)] text-[var(--text-muted)] hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-950/20"
                     }`}
-                title={measureMode ? "Exit measurement mode" : "Measure distance (click up to 3 points)"}
+                title={measureMode ? "Salir del modo medición" : "Medir distancia (clic en hasta 3 puntos)"}
             >
                 <Ruler size={10} />
-                {measureMode ? "MEASURING" : "MEASURE"}
+                {measureMode ? "MIDIENDO" : "MEDIR"}
             </button>
 
             {/* Clear measurements */}
@@ -160,7 +160,7 @@ function ScaleBar({ zoom, latitude, measureMode, measurePoints, onToggleMeasure,
                 <button
                     onClick={onClearMeasure}
                     className="flex items-center gap-1 text-[8px] font-mono tracking-widest px-1.5 py-0.5 rounded border border-[var(--border-primary)] text-[var(--text-muted)] hover:text-red-400 hover:border-red-500/50 hover:bg-red-950/20 transition-all"
-                    title="Clear all waypoints"
+                    title="Limpiar todos los puntos"
                 >
                     <Trash2 size={10} />
                 </button>

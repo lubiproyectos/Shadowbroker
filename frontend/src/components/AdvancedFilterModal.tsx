@@ -185,7 +185,7 @@ export default function AdvancedFilterModal({
                             <span className={`text-[11px] ${c.text} tracking-[0.25em] font-semibold`}>{title}</span>
                             {totalSelected > 0 && (
                                 <span className={`text-[9px] ${c.bg} ${c.text} px-1.5 py-0.5 rounded-sm`}>
-                                    {totalSelected} SELECTED
+                                    {totalSelected} SELECCIONADOS
                                 </span>
                             )}
                         </div>
@@ -243,7 +243,7 @@ export default function AdvancedFilterModal({
                                 onClick={() => clearField(activeTab)}
                                 className="text-[8px] text-red-400/70 hover:text-red-300 tracking-widest ml-1"
                             >
-                                CLEAR
+                                BORRAR
                             </button>
                         </div>
                     )}
@@ -256,7 +256,7 @@ export default function AdvancedFilterModal({
                                 type="text"
                                 value={searchTerms[activeTab] || ''}
                                 onChange={(e) => setSearchTerms(prev => ({ ...prev, [activeTab]: e.target.value }))}
-                                placeholder={`Search ${activeField?.label.toLowerCase() || ''}...`}
+                                placeholder={`Buscar ${activeField?.label.toLowerCase() || ''}...`}
                                 className={`w-full bg-[var(--bg-primary)]/50 border border-[var(--border-primary)]/70 rounded-lg text-[11px] text-[var(--text-secondary)] pl-8 pr-8 py-2 font-mono tracking-wide focus:outline-none focus:${c.border} focus:ring-1 ${c.ring} placeholder-[var(--text-muted)] transition-all`}
                                 autoFocus
                             />
@@ -271,10 +271,10 @@ export default function AdvancedFilterModal({
                         </div>
                         <div className="flex justify-between mt-1.5">
                             <span className="text-[8px] text-[var(--text-muted)] tracking-widest">
-                                {filteredOptions.length} AVAILABLE
+                                {filteredOptions.length} DISPONIBLES
                             </span>
                             <span className="text-[8px] text-[var(--text-muted)] tracking-widest">
-                                {draft[activeTab]?.size || 0} SELECTED
+                                {draft[activeTab]?.size || 0} SELECCIONADOS
                             </span>
                         </div>
                     </div>
@@ -283,7 +283,7 @@ export default function AdvancedFilterModal({
                     <div className="flex-1 min-h-0 overflow-y-auto px-2 pb-2 styled-scrollbar" style={{ maxHeight: '35vh' }}>
                         {filteredOptions.length === 0 ? (
                             <div className="text-center py-8 text-[var(--text-muted)] text-[10px] tracking-widest">
-                                NO MATCHING RESULTS
+                                SIN RESULTADOS
                             </div>
                         ) : (
                             <div className="flex flex-col gap-px">
@@ -321,20 +321,20 @@ export default function AdvancedFilterModal({
                             onClick={clearAll}
                             className="text-[9px] text-red-400/70 hover:text-red-300 tracking-widest transition-colors"
                         >
-                            CLEAR ALL
+                            BORRAR TODO
                         </button>
                         <div className="flex gap-2">
                             <button
                                 onClick={onClose}
                                 className="text-[9px] text-[var(--text-muted)] hover:text-[var(--text-secondary)] tracking-widest border border-[var(--border-primary)] rounded-md px-4 py-1.5 hover:bg-[var(--bg-tertiary)]/50 transition-all"
                             >
-                                CANCEL
+                                CANCELAR
                             </button>
                             <button
                                 onClick={handleApply}
                                 className={`text-[9px] ${c.text} tracking-widest border ${c.border} rounded-md px-4 py-1.5 ${c.bg} ${c.bgHover} transition-all font-semibold`}
                             >
-                                APPLY{totalSelected > 0 ? ` (${totalSelected})` : ''}
+                                APLICAR{totalSelected > 0 ? ` (${totalSelected})` : ''}
                             </button>
                         </div>
                     </div>

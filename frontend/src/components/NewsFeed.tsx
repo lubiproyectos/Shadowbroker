@@ -199,43 +199,43 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 className="w-full bg-black/60 backdrop-blur-md border border-emerald-800 rounded-xl flex flex-col z-10 font-mono shadow-[0_4px_30px_rgba(0,255,128,0.2)] pointer-events-auto overflow-hidden flex-shrink-0"
             >
                 <div className="p-3 border-b border-emerald-500/30 bg-emerald-950/40 flex justify-between items-center">
-                    <h2 className="text-xs tracking-widest font-bold text-emerald-400">REGION DOSSIER</h2>
+                    <h2 className="text-xs tracking-widest font-bold text-emerald-400">DOSIER REGIONAL</h2>
                     <span className="text-[8px] text-[var(--text-muted)]">
                         {selectedEntity.extra ? `${selectedEntity.extra.lat.toFixed(3)}, ${selectedEntity.extra.lng.toFixed(3)}` : ''}
                     </span>
                 </div>
                 {regionDossierLoading ? (
                     <div className="p-6 flex items-center justify-center">
-                        <span className="text-emerald-400 text-[10px] font-mono animate-pulse tracking-widest">COMPILING INTELLIGENCE...</span>
+                        <span className="text-emerald-400 text-[10px] font-mono animate-pulse tracking-widest">COMPILANDO INTELIGENCIA...</span>
                     </div>
                 ) : d && !d.error ? (
                     <div className="p-3 flex flex-col gap-1.5 max-h-[500px] overflow-y-auto styled-scrollbar text-[10px]">
                         {/* COUNTRY */}
-                        <div className="text-[9px] text-emerald-500 tracking-widest font-bold border-b border-emerald-900/50 pb-1">COUNTRY LEVEL {d.country?.flag_emoji || ''}</div>
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">COUNTRY</span><span className="text-[var(--text-primary)] font-bold">{d.country?.name}</span></div>
+                        <div className="text-[9px] text-emerald-500 tracking-widest font-bold border-b border-emerald-900/50 pb-1">NIVEL PAÍS {d.country?.flag_emoji || ''}</div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">PAÍS</span><span className="text-[var(--text-primary)] font-bold">{d.country?.name}</span></div>
                         {d.country?.official_name && d.country.official_name !== d.country.name && (
-                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">OFFICIAL</span><span className="text-[var(--text-secondary)] text-right max-w-[180px]">{d.country.official_name}</span></div>
+                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">OFICIAL</span><span className="text-[var(--text-secondary)] text-right max-w-[180px]">{d.country.official_name}</span></div>
                         )}
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">LEADER</span><span className="text-emerald-400 font-bold">{d.country?.leader}</span></div>
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">GOVERNMENT</span><span className="text-[var(--text-primary)] font-bold text-right max-w-[180px]">{d.country?.government_type}</span></div>
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">POPULATION</span><span className="text-[var(--text-primary)] font-bold">{d.country?.population?.toLocaleString()}</span></div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">LÍDER</span><span className="text-emerald-400 font-bold">{d.country?.leader}</span></div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">GOBIERNO</span><span className="text-[var(--text-primary)] font-bold text-right max-w-[180px]">{d.country?.government_type}</span></div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">POBLACIÓN</span><span className="text-[var(--text-primary)] font-bold">{d.country?.population?.toLocaleString()}</span></div>
                         <div className="flex justify-between"><span className="text-[var(--text-muted)]">CAPITAL</span><span className="text-[var(--text-primary)] font-bold">{d.country?.capital}</span></div>
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">LANGUAGES</span><span className="text-[var(--text-primary)] text-right max-w-[180px]">{d.country?.languages?.join(', ')}</span></div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">IDIOMAS</span><span className="text-[var(--text-primary)] text-right max-w-[180px]">{d.country?.languages?.join(', ')}</span></div>
                         {d.country?.currencies?.length > 0 && (
-                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">CURRENCY</span><span className="text-[var(--text-primary)] text-right max-w-[180px]">{d.country.currencies.join(', ')}</span></div>
+                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">MONEDA</span><span className="text-[var(--text-primary)] text-right max-w-[180px]">{d.country.currencies.join(', ')}</span></div>
                         )}
-                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">REGION</span><span className="text-[var(--text-primary)]">{d.country?.subregion || d.country?.region}</span></div>
+                        <div className="flex justify-between"><span className="text-[var(--text-muted)]">REGIÓN</span><span className="text-[var(--text-primary)]">{d.country?.subregion || d.country?.region}</span></div>
                         {d.country?.area_km2 > 0 && (
-                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">AREA</span><span className="text-[var(--text-primary)]">{d.country.area_km2.toLocaleString()} km²</span></div>
+                            <div className="flex justify-between"><span className="text-[var(--text-muted)]">ÁREA</span><span className="text-[var(--text-primary)]">{d.country.area_km2.toLocaleString()} km²</span></div>
                         )}
 
                         {/* LOCAL */}
                         {(d.local?.name || d.local?.state) && (
                             <>
-                                <div className="text-[9px] text-emerald-500 tracking-widest font-bold border-b border-emerald-900/50 pb-1 mt-2">LOCAL LEVEL</div>
-                                {d.local.name && <div className="flex justify-between"><span className="text-[var(--text-muted)]">LOCALITY</span><span className="text-[var(--text-primary)] font-bold">{d.local.name}</span></div>}
-                                {d.local.state && <div className="flex justify-between"><span className="text-[var(--text-muted)]">STATE/PROVINCE</span><span className="text-[var(--text-primary)] font-bold">{d.local.state}</span></div>}
-                                {d.local.description && <div className="flex justify-between"><span className="text-[var(--text-muted)]">TYPE</span><span className="text-[var(--text-secondary)]">{d.local.description}</span></div>}
+                                <div className="text-[9px] text-emerald-500 tracking-widest font-bold border-b border-emerald-900/50 pb-1 mt-2">NIVEL LOCAL</div>
+                                {d.local.name && <div className="flex justify-between"><span className="text-[var(--text-muted)]">LOCALIDAD</span><span className="text-[var(--text-primary)] font-bold">{d.local.name}</span></div>}
+                                {d.local.state && <div className="flex justify-between"><span className="text-[var(--text-muted)]">ESTADO/PROVINCIA</span><span className="text-[var(--text-primary)] font-bold">{d.local.state}</span></div>}
+                                {d.local.description && <div className="flex justify-between"><span className="text-[var(--text-muted)]">TIPO</span><span className="text-[var(--text-secondary)]">{d.local.description}</span></div>}
                                 {d.local.summary && (
                                     <div className="mt-1 p-2 bg-black/60 border border-emerald-800/50 rounded text-[9px] text-[var(--text-secondary)] leading-relaxed">
                                         <span className="text-emerald-400 font-bold">&gt;_ INTEL: </span>
@@ -250,7 +250,7 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 ) : d?.error ? (
                     <div className="p-4 text-[var(--text-secondary)] text-[10px]">{d.error}</div>
                 ) : (
-                    <div className="p-4 text-red-400 text-[10px]">INTEL UNAVAILABLE</div>
+                    <div className="p-4 text-red-400 text-[10px]">INTELIGENCIA NO DISPONIBLE</div>
                 )}
             </motion.div>
         );
@@ -298,14 +298,14 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className={`p-3 border-b ${borderColor} ${bgColor} flex justify-between items-center`}>
                         <h2 className={`text-xs tracking-widest font-bold ${headerColor} flex items-center gap-2`}>
-                            ⚠ TRACKED AIRCRAFT — {flight.alert_category || "ALERT"}
+                            ⚠ AERONAVE RASTREADA — {flight.alert_category || "ALERTA"}
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">TRK: {callsign}</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">OPERATOR</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">OPERADOR</span>
                             {flight.alert_operator && flight.alert_operator !== "UNKNOWN" ? (() => {
                                 const wikiSlug = flight.alert_wiki || flight.alert_operator.replace(/\s*\(.*?\)\s*/g, '').trim().replace(/ /g, '_');
                                 const wikiHref = `https://en.wikipedia.org/wiki/${encodeURIComponent(wikiSlug)}`;
@@ -358,54 +358,54 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                             </div>
                         )}
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">CATEGORY</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">CATEGORÍA</span>
                             <span className={`text-xs font-bold ${headerColor}`}>{flight.alert_category || "N/A"}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">AIRCRAFT</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">AERONAVE</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.alert_type || flight.model || "UNKNOWN"}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">REGISTRATION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">MATRÍCULA</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.registration || "N/A"}</span>
                         </div>
                         {flight.alert_tags && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">INTEL TAGS</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">ETIQUETAS INTEL</span>
                                 <span className={`text-xs font-bold text-right max-w-[200px] ${headerColor}`}>{flight.alert_tags}</span>
                             </div>
                         )}
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">ALTITUDE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ALTITUD</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{(Math.round((flight.alt || 0) / 0.3048)).toLocaleString()} ft</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">GROUND SPEED</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">VELOCIDAD</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.speed_knots ? `${flight.speed_knots} kts` : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">HEADING</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">RUMBO</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{Math.round(flight.heading || 0)}°</span>
                         </div>
                         {flight.squawk && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
                                 <span className="text-[var(--text-muted)] text-[10px]">SQUAWK</span>
-                                <span className={`text-xs font-bold ${flight.squawk === '7700' ? 'text-red-400 animate-pulse' : flight.squawk === '7600' ? 'text-yellow-400' : 'text-[var(--text-primary)]'}`}>{flight.squawk}{flight.squawk === '7700' ? ' ⚠ EMERGENCY' : flight.squawk === '7600' ? ' COMMS LOST' : ''}</span>
+                                <span className={`text-xs font-bold ${flight.squawk === '7700' ? 'text-red-400 animate-pulse' : flight.squawk === '7600' ? 'text-yellow-400' : 'text-[var(--text-primary)]'}`}>{flight.squawk}{flight.squawk === '7700' ? ' ⚠ EMERGENCIA' : flight.squawk === '7600' ? ' COMMS LOST' : ''}</span>
                             </div>
                         )}
                         {flight.alert_link && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">REFERENCE</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">REFERENCIA</span>
                                 <a href={flight.alert_link} target="_blank" rel="noreferrer" className={`text-xs font-bold underline ${headerColor} hover:opacity-80`}>
-                                    View Intel Source
+                                    Ver fuente intel
                                 </a>
                             </div>
                         )}
                         {flight.icao24 && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">FLIGHT RECORD</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">HISTORIAL DE VUELO</span>
                                 <a href={`https://adsb.lol/?icao=${flight.icao24}`} target="_blank" rel="noreferrer" className={`${headerColor} hover:opacity-80 text-xs font-bold underline`}>
-                                    View History Log
+                                    Ver historial
                                 </a>
                             </div>
                         )}
@@ -465,22 +465,22 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className="p-3 border-b border-[var(--border-primary)]/30 bg-[var(--bg-secondary)]/40 flex justify-between items-center">
                         <h2 className={`text-xs tracking-widest font-bold ${selectedEntity.type === 'military_flight' ? 'text-red-400' : selectedEntity.type === 'private_flight' ? 'text-orange-400' : selectedEntity.type === 'private_jet' ? 'text-purple-400' : 'text-cyan-400'} flex items-center gap-2`}>
-                            {selectedEntity.type === 'military_flight' ? "MILITARY BOGEY INTERCEPT" : selectedEntity.type === 'private_flight' ? "PRIVATE TRANSPONDER" : selectedEntity.type === 'private_jet' ? "PRIVATE JET TRANSPONDER" : "COMMERCIAL TRANSPONDER"}
+                            {selectedEntity.type === 'military_flight' ? "INTERCEPCIÓN BOGEY MILITAR" : selectedEntity.type === 'private_flight' ? "TRANSPONDEDOR PRIVADO" : selectedEntity.type === 'private_jet' ? "TRANSPONDEDOR JET PRIVADO" : "TRANSPONDEDOR COMERCIAL"}
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">TRK: {callsign}</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">OPERATOR</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">OPERADOR</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{airline}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">REGISTRATION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">MATRÍCULA</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.registration || "N/A"}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">AIRCRAFT MODEL</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">MODELO DE AERONAVE</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.model || "UNKNOWN"}</span>
                         </div>
                         {/* Aircraft photo + Wikipedia link */}
@@ -508,32 +508,32 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                             </div>
                         )}
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">ALTITUDE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ALTITUD</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{(Math.round((flight.alt || 0) / 0.3048)).toLocaleString()} ft</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">GROUND SPEED</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">VELOCIDAD</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{flight.speed_knots ? `${flight.speed_knots} kts` : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">HEADING</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">RUMBO</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{Math.round(flight.heading || 0)}°</span>
                         </div>
                         {flight.squawk && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
                                 <span className="text-[var(--text-muted)] text-[10px]">SQUAWK</span>
-                                <span className={`text-xs font-bold ${flight.squawk === '7700' ? 'text-red-400 animate-pulse' : flight.squawk === '7600' ? 'text-yellow-400' : 'text-[var(--text-primary)]'}`}>{flight.squawk}{flight.squawk === '7700' ? ' ⚠ EMERGENCY' : flight.squawk === '7600' ? ' COMMS LOST' : ''}</span>
+                                <span className={`text-xs font-bold ${flight.squawk === '7700' ? 'text-red-400 animate-pulse' : flight.squawk === '7600' ? 'text-yellow-400' : 'text-[var(--text-primary)]'}`}>{flight.squawk}{flight.squawk === '7700' ? ' ⚠ EMERGENCIA' : flight.squawk === '7600' ? ' COMMS LOST' : ''}</span>
                             </div>
                         )}
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">ROUTE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">RUTA</span>
                             <span className="text-cyan-400 text-xs font-bold">{flight.origin_name !== "UNKNOWN" ? `[${flight.origin_name}] → [${flight.dest_name}]` : "UNKNOWN"}</span>
                         </div>
                         {flight.icao24 && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">FLIGHT RECORD</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">HISTORIAL DE VUELO</span>
                                 <a href={`https://adsb.lol/?icao=${flight.icao24}`} target="_blank" rel="noreferrer" className="text-cyan-400 hover:text-cyan-300 text-xs font-bold underline">
-                                    View History Log
+                                    Ver historial
                                 </a>
                             </div>
                         )}
@@ -547,12 +547,12 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
         const ship = data?.ships?.find((s: any) => s.mmsi === selectedEntity.id);
         if (ship) {
             const vesselTypeLabels: Record<string, string> = {
-                'tanker': 'TANKER',
-                'cargo': 'CARGO VESSEL',
-                'passenger': 'PASSENGER / CRUISE',
-                'yacht': 'PRIVATE YACHT',
-                'military_vessel': 'MILITARY VESSEL',
-                'carrier': 'AIRCRAFT CARRIER',
+                'tanker': 'PETROLERO',
+                'cargo': 'BUQUE DE CARGA',
+                'passenger': 'PASAJEROS / CRUCERO',
+                'yacht': 'YATE PRIVADO',
+                'military_vessel': 'BUQUE MILITAR',
+                'carrier': 'PORTAVIONES',
             };
             const typeLabel = vesselTypeLabels[ship.type] || ship.type?.toUpperCase() || 'VESSEL';
 
@@ -567,14 +567,14 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
             const headerColor = headerColorMap[ship.type] || 'text-[var(--text-secondary)]';
 
             const headerTitleMap: Record<string, string> = {
-                'tanker': 'AIS TANKER INTERCEPT',
-                'cargo': 'AIS CARGO INTERCEPT',
-                'passenger': 'AIS PASSENGER VESSEL',
-                'yacht': 'AIS YACHT SIGNAL',
-                'military_vessel': 'AIS MILITARY VESSEL',
-                'carrier': 'CARRIER STRIKE GROUP',
+                'tanker': 'INTERCEPCIÓN AIS PETROLERO',
+                'cargo': 'INTERCEPCIÓN AIS CARGA',
+                'passenger': 'AIS BUQUE DE PASAJEROS',
+                'yacht': 'SEÑAL AIS YATE',
+                'military_vessel': 'AIS BUQUE MILITAR',
+                'carrier': 'GRUPO DE ATAQUE DE PORTAVIONES',
             };
-            const headerTitle = headerTitleMap[ship.type] || 'AIS VESSEL SIGNAL';
+            const headerTitle = headerTitleMap[ship.type] || 'SEÑAL AIS BUQUE';
 
             return (
                 <motion.div
@@ -592,46 +592,46 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">VESSEL NAME</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">NOMBRE DEL BUQUE</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold text-right ml-4">{ship.name || 'UNKNOWN'}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">VESSEL TYPE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">TIPO DE BUQUE</span>
                             <span className={`text-xs font-bold ${headerColor}`}>{typeLabel}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">FLAG STATE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ESTADO DE BANDERA</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{ship.country || 'UNKNOWN'}</span>
                         </div>
                         {ship.callsign && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">CALLSIGN</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">INDICATIVO</span>
                                 <span className="text-[var(--text-primary)] text-xs font-bold">{ship.callsign}</span>
                             </div>
                         )}
                         {(ship.imo ?? 0) > 0 && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">IMO NUMBER</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">NÚMERO IMO</span>
                                 <span className="text-[var(--text-primary)] text-xs font-bold">{ship.imo}</span>
                             </div>
                         )}
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">DESTINATION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">DESTINO</span>
                             <span className={`text-xs font-bold ${ship.destination && ship.destination !== 'UNKNOWN' ? 'text-cyan-400' : 'text-orange-400'}`}>{ship.destination || 'UNKNOWN'}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">SPEED (SOG)</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">VELOCIDAD (SOG)</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{ship.type === 'carrier' ? 'UNKNOWN' : `${ship.sog || 0} kts`}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">COURSE (COG)</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">RUMBO (COG)</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{ship.type === 'carrier' ? 'UNKNOWN' : `${Math.round(ship.cog || 0)}°`}</span>
                         </div>
                         {ship.mmsi && (
                             <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">VESSEL RECORD</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">REGISTRO DEL BUQUE</span>
                                 <a href={`https://www.marinetraffic.com/en/ais/details/ships/mmsi:${ship.mmsi}`} target="_blank" rel="noreferrer" className="text-cyan-400 hover:text-cyan-300 text-xs font-bold underline">
-                                    View on MarineTraffic
+                                    Ver en MarineTraffic
                                 </a>
                             </div>
                         )}
@@ -665,22 +665,22 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className="p-3 border-b border-orange-500/30 bg-orange-950/40 flex justify-between items-center">
                         <h2 className="text-xs tracking-widest font-bold text-orange-400 flex items-center gap-2">
-                            <AlertTriangle size={14} className="text-orange-400" /> MILITARY INCIDENT CLUSTER
+                            <AlertTriangle size={14} className="text-orange-400" /> CLÚSTER DE INCIDENTES MILITARES
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">ID: {selectedEntity.id}</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">LOCATION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">UBICACIÓN</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold text-right ml-4">{props.name || 'UNKNOWN REGION'}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">ARTICLE COUNT</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ARTÍCULOS</span>
                             <span className="text-orange-400 text-xs font-bold">{props.count || 1}</span>
                         </div>
                         <div className="flex flex-col gap-2 mt-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">LATEST REPORTS:</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ÚLTIMOS INFORMES:</span>
                             <div className="flex flex-col gap-1 max-h-[250px] overflow-y-auto styled-scrollbar">
                                 {(() => {
                                     const urls: string[] = props._urls_list || [];
@@ -728,29 +728,29 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className="p-3 border-b border-yellow-500/30 bg-yellow-950/40 flex justify-between items-center">
                         <h2 className="text-xs tracking-widest font-bold text-yellow-400 flex items-center gap-2">
-                            <AlertTriangle size={14} className="text-yellow-400" /> REGIONAL TACTICAL EVENT
+                            <AlertTriangle size={14} className="text-yellow-400" /> EVENTO TÁCTICO REGIONAL
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">ID: {item.id}</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">REGION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">REGIÓN</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold text-right ml-4">{item.region || 'UNKNOWN'}</span>
                         </div>
                         <div className="flex flex-col gap-2 border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">DESCRIPTION</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">DESCRIPCIÓN</span>
                             <span className="text-yellow-400 text-xs font-bold leading-tight">{item.title}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2 mt-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">REPORTED TIME</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">HORA REPORTADA</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{item.timestamp || 'UNKNOWN'}</span>
                         </div>
                         {item.link && (
                             <div className="flex justify-between items-center pb-2 mt-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">SOURCE</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">FUENTE</span>
                                 <a href={item.link} target="_blank" rel="noreferrer" className="text-yellow-400 hover:text-yellow-300 text-xs font-bold underline">
-                                    View Liveuamap Report
+                                    Ver informe Liveuamap
                                 </a>
                             </div>
                         )}
@@ -772,18 +772,18 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className="p-3 border-b border-red-500/30 bg-red-950/40 flex justify-between items-center">
                         <h2 className="text-xs tracking-widest font-bold text-red-400 flex items-center gap-2">
-                            <AlertTriangle size={14} className="text-red-400" /> THREAT INTERCEPT
+                            <AlertTriangle size={14} className="text-red-400" /> INTERCEPCIÓN DE AMENAZA
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">LVL: {item.risk_score}/10</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">SOURCE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">FUENTE</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold text-right ml-4">{item.source || 'UNKNOWN'}</span>
                         </div>
                         <div className="flex flex-col gap-2 border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">HEADLINE</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">TITULAR</span>
                             <span className="text-red-400 text-xs font-bold leading-tight">{item.title}</span>
                         </div>
                         {item.machine_assessment && (
@@ -795,9 +795,9 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                         )}
                         {item.link && (
                             <div className="flex justify-between items-center pb-2 mt-2">
-                                <span className="text-[var(--text-muted)] text-[10px]">REFERENCE</span>
+                                <span className="text-[var(--text-muted)] text-[10px]">REFERENCIA</span>
                                 <a href={item.link} target="_blank" rel="noreferrer" className="text-red-400 hover:text-red-300 text-xs font-bold underline">
-                                    View Source Article
+                                    Ver artículo fuente
                                 </a>
                             </div>
                         )}
@@ -819,23 +819,23 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                 >
                     <div className="p-3 border-b border-[var(--border-primary)]/30 bg-[var(--bg-secondary)]/40 flex justify-between items-center">
                         <h2 className="text-xs tracking-widest font-bold text-cyan-400 flex items-center gap-2">
-                            AERONAUTICAL HUB
+                            HUB AERONÁUTICO
                         </h2>
                         <span className="text-[10px] text-[var(--text-muted)] font-mono">IATA: {apt.iata}</span>
                     </div>
 
                     <div className="p-4 flex flex-col gap-3">
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">FACILITY NAME</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">NOMBRE DE INSTALACIÓN</span>
                             <span className="text-[var(--text-primary)] text-[10px] font-bold text-right ml-4 break-words">{apt.name}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">COORDINATES</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">COORDENADAS</span>
                             <span className="text-[var(--text-primary)] text-xs font-bold">{apt.lat.toFixed(4)}, {apt.lng.toFixed(4)}</span>
                         </div>
                         <div className="flex justify-between items-center border-b border-[var(--border-primary)] pb-2">
-                            <span className="text-[var(--text-muted)] text-[10px]">STATUS</span>
-                            <span className="text-green-400 animate-pulse text-xs font-bold">OPERATIONAL</span>
+                            <span className="text-[var(--text-muted)] text-[10px]">ESTADO</span>
+                            <span className="text-green-400 animate-pulse text-xs font-bold">OPERACIONAL</span>
                         </div>
                     </div>
                 </motion.div>
@@ -951,7 +951,7 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
             >
                 <div className="flex justify-between items-center relative z-10">
                     <h2 className="text-xs tracking-widest font-bold text-cyan-400 flex items-center gap-2">
-                        <AlertTriangle size={14} /> GLOBAL THREAT INTERCEPT
+                        <AlertTriangle size={14} /> PLATAFORMA DE INTELIGENCIA DE ÚLTIMAS NOTICIAS
                     </h2>
                     <button className="text-cyan-500 hover:text-[var(--text-primary)] transition-colors">
                         {isMinimized ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
@@ -1080,7 +1080,7 @@ function NewsFeedInner({ data, selectedEntity, regionDossier, regionDossierLoadi
                         })}
                         {news.length === 0 && (
                             <div className="text-cyan-500/50 text-[10px] tracking-widest font-bold text-center mt-6 animate-pulse">
-                                INITIALIZING SECURE HANDSHAKE...
+                                INICIANDO PROTOCOLO SEGURO...
                             </div>
                         )}
                     </motion.div>

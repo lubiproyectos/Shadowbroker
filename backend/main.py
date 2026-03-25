@@ -19,6 +19,7 @@ _SECRET_VARS = [
     "LTA_ACCOUNT_KEY",
     "CORS_ORIGINS",
     "ADMIN_KEY",
+    "ANTHROPIC_API_KEY",
 ]
 
 for _var in _SECRET_VARS:
@@ -48,6 +49,7 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from services.schemas import HealthResponse, RefreshResponse
+from services.metrics_store import get_metrics
 import uvicorn
 import hashlib
 import json as json_mod
@@ -149,6 +151,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/metrics/claude")
+def claude_metrics():
+    data = get_metrics()
+
+    status = "ok"
+
+    # error real
+    if data.get("last_error"):
+        status = "error"
+
+    # límite de gasto
+    if data.get("tokens_today", 0) > 100000:
+        status = "error"
+    elif data.get("tokens_today", 0) > 50000:
+        status = "warning"
+
+    data["status"] = status
+    return data
+
 from services.data_fetcher import update_all_data
 
 _refresh_lock = threading.Lock()
@@ -213,6 +234,8 @@ async def update_viewport(vp: ViewportUpdate, request: Request):
 @limiter.limit("120/minute")
 async def live_data(request: Request):
     return get_latest_data()
+
+
 
 def _etag_response(request: Request, payload: dict, prefix: str = "", default=None):
     """Serialize once, hash the bytes for ETag, return 304 or full response."""

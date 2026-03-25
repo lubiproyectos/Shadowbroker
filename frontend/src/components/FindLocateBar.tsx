@@ -49,8 +49,8 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
             results.push({
                 id: `flight-${uid}`,
                 label: f.callsign || uid,
-                sublabel: `${f.model || 'Unknown'} · ${f.airline_code || 'Commercial'}`,
-                category: "COMMERCIAL",
+                sublabel: `${f.model || 'Desconocido'} · ${f.airline_code || 'Comercial'}`,
+                category: "COMERCIAL",
                 categoryColor: "text-cyan-400",
                 lat: f.lat,
                 lng: f.lng,
@@ -65,8 +65,8 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
             results.push({
                 id: `${type === 'private_jet' ? 'private-jet' : 'private-flight'}-${uid}`,
                 label: f.callsign || f.registration || uid,
-                sublabel: `${f.model || 'Unknown'} · Private`,
-                category: "PRIVATE",
+                sublabel: `${f.model || 'Desconocido'} · Privado`,
+                category: "PRIVADO",
                 categoryColor: "text-orange-400",
                 lat: f.lat,
                 lng: f.lng,
@@ -80,8 +80,8 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
             results.push({
                 id: `mil-flight-${uid}`,
                 label: f.callsign || uid,
-                sublabel: `${f.model || 'Unknown'} · ${f.military_type || 'Military'}`,
-                category: "MILITARY",
+                sublabel: `${f.model || 'Desconocido'} · ${f.military_type || 'Militar'}`,
+                category: "MILITAR",
                 categoryColor: "text-yellow-400",
                 lat: f.lat,
                 lng: f.lng,
@@ -100,7 +100,7 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
                 id: `tracked-${uid}`,
                 label: operator,
                 sublabel: `${category} · ${type} (${f.registration || uid})`,
-                category: "TRACKED",
+                category: "RASTREADO",
                 categoryColor: "text-pink-400",
                 lat: f.lat,
                 lng: f.lng,
@@ -114,8 +114,8 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
             results.push({
                 id: `ship-${s.mmsi || s.name || ''}`,
                 label: s.name || "UNKNOWN",
-                sublabel: `${s.type || 'Vessel'} · ${s.destination || 'Unknown dest'}`,
-                category: "MARITIME",
+                sublabel: `${s.type || 'Buque'} · ${s.destination || 'Destino desconocido'}`,
+                category: "MARÍTIMO",
                 categoryColor: "text-blue-400",
                 lat: s.lat,
                 lng: s.lng,
@@ -128,8 +128,8 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
             results.push({
                 id: `tracked-db-${op}`,
                 label: op,
-                sublabel: `Database Record · Operator`,
-                category: "DATABASE",
+                sublabel: `Registro de base de datos · Operador`,
+                category: "BASE DE DATOS",
                 categoryColor: "text-purple-400",
                 lat: 0,
                 lng: 0,
@@ -163,12 +163,12 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
     };
 
     const categoryIcons: Record<string, React.ReactNode> = {
-        COMMERCIAL: <Plane size={10} className="text-cyan-400" />,
-        PRIVATE: <Plane size={10} className="text-orange-400" />,
-        MILITARY: <Shield size={10} className="text-yellow-400" />,
-        TRACKED: <Star size={10} className="text-pink-400" />,
-        MARITIME: <Ship size={10} className="text-blue-400" />,
-        DATABASE: <Database size={10} className="text-purple-400" />,
+        COMERCIAL: <Plane size={10} className="text-cyan-400" />,
+        PRIVADO: <Plane size={10} className="text-orange-400" />,
+        MILITAR: <Shield size={10} className="text-yellow-400" />,
+        RASTREADO: <Star size={10} className="text-pink-400" />,
+        "MARÍTIMO": <Ship size={10} className="text-blue-400" />,
+        "BASE DE DATOS": <Database size={10} className="text-purple-400" />,
     };
 
     return (
@@ -179,7 +179,7 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
                     ref={inputRef}
                     type="text"
                     value={query}
-                    placeholder="Find aircraft, person or vessel..."
+                    placeholder="Buscar aeronave, persona o buque..."
                     className="flex-1 bg-transparent text-[10px] text-[var(--text-secondary)] font-mono tracking-wider outline-none placeholder:text-[var(--text-muted)]"
                     onChange={(e) => {
                         setQuery(e.target.value);
@@ -224,7 +224,7 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
                             ))}
                         </div>
                         <div className="px-3 py-1.5 border-t border-[var(--border-primary)] bg-[var(--bg-primary)]/50 text-[8px] text-[var(--text-muted)] font-mono tracking-widest">
-                            {filtered.length} RESULT{filtered.length !== 1 ? 'S' : ''} — CLICK TO LOCATE
+                            {filtered.length} RESULTADO{filtered.length !== 1 ? 'S' : ''} — CLIC PARA LOCALIZAR
                         </div>
                     </motion.div>
                 )}
@@ -235,7 +235,7 @@ export default function FindLocateBar({ data, onLocate, onFilter }: FindLocateBa
                         exit={{ opacity: 0, y: -4 }}
                         className="absolute top-full left-0 right-0 mt-1 bg-[var(--bg-secondary)]/90 backdrop-blur-md border border-[var(--border-primary)] rounded-lg z-50 p-4 text-center"
                     >
-                        <div className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">NO MATCHING ASSETS</div>
+                        <div className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">SIN ACTIVOS COINCIDENTES</div>
                     </motion.div>
                 )}
             </AnimatePresence>

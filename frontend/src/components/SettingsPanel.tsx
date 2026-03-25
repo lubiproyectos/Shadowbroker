@@ -24,7 +24,7 @@ interface FeedEntry {
     weight: number;
 }
 
-const WEIGHT_LABELS: Record<number, string> = { 1: "LOW", 2: "MED", 3: "STD", 4: "HIGH", 5: "CRIT" };
+const WEIGHT_LABELS: Record<number, string> = { 1: "BAJO", 2: "MED", 3: "EST", 4: "ALTO", 5: "CRÍT" };
 const WEIGHT_COLORS: Record<number, string> = {
     1: "text-gray-400 border-gray-600",
     2: "text-blue-400 border-blue-600",
@@ -224,8 +224,8 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                     <Settings size={16} className="text-cyan-400" />
                                 </div>
                                 <div>
-                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">SYSTEM CONFIG</h2>
-                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">SETTINGS &amp; DATA SOURCES</span>
+                                    <h2 className="text-sm font-bold tracking-[0.2em] text-[var(--text-primary)] font-mono">CONFIG. DEL SISTEMA</h2>
+                                    <span className="text-[9px] text-[var(--text-muted)] font-mono tracking-widest">AJUSTES Y FUENTES DE DATOS</span>
                                 </div>
                             </div>
                             <button
@@ -239,7 +239,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                         {/* Admin Key Bar */}
                         <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--border-primary)]/40 bg-[var(--bg-primary)]/30">
                             <Shield size={12} className={adminKey ? "text-green-400" : "text-yellow-500"} />
-                            <span className="text-[9px] font-mono tracking-widest text-[var(--text-muted)] whitespace-nowrap">ADMIN KEY</span>
+                            <span className="text-[9px] font-mono tracking-widest text-[var(--text-muted)] whitespace-nowrap">CLAVE ADMIN</span>
                             <input
                                 type="password"
                                 value={adminKey}
@@ -247,10 +247,10 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                     setAdminKey(e.target.value);
                                     localStorage.setItem('sb_admin_key', e.target.value);
                                 }}
-                                placeholder="Enter admin key for protected operations..."
+                                placeholder="Ingrese clave admin para operaciones protegidas..."
                                 className="flex-1 bg-[var(--bg-primary)]/60 border border-[var(--border-primary)] rounded px-2 py-1 text-[10px] font-mono text-[var(--text-secondary)] outline-none focus:border-cyan-700 placeholder:text-[var(--text-muted)]/50"
                             />
-                            {adminKey && <span className="text-[8px] font-mono text-green-400/70 tracking-widest">SET</span>}
+                            {adminKey && <span className="text-[8px] font-mono text-green-400/70 tracking-widest">ACTIVA</span>}
                         </div>
 
                         <div className="flex border-b border-[var(--border-primary)]/60">
@@ -259,14 +259,14 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                 className={`flex-1 px-4 py-2.5 text-[10px] font-mono tracking-widest font-bold transition-colors flex items-center justify-center gap-1.5 ${activeTab === "api-keys" ? "text-cyan-400 border-b-2 border-cyan-500 bg-cyan-950/10" : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"}`}
                             >
                                 <Key size={10} />
-                                API KEYS
+                                CLAVES API
                             </button>
                             <button
                                 onClick={() => setActiveTab("news-feeds")}
                                 className={`flex-1 px-4 py-2.5 text-[10px] font-mono tracking-widest font-bold transition-colors flex items-center justify-center gap-1.5 ${activeTab === "news-feeds" ? "text-orange-400 border-b-2 border-orange-500 bg-orange-950/10" : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"}`}
                             >
                                 <Rss size={10} />
-                                NEWS FEEDS
+                                FUENTES DE NOTICIAS
                                 {feedsDirty && <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />}
                             </button>
                         </div>
@@ -279,7 +279,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                     <div className="flex items-start gap-2">
                                         <Shield size={12} className="text-cyan-500 mt-0.5 flex-shrink-0" />
                                         <p className="text-[10px] text-[var(--text-secondary)] font-mono leading-relaxed">
-                                            API keys are stored locally in the backend <span className="text-cyan-400">.env</span> file. Keys marked with <Key size={8} className="inline text-yellow-500" /> are required for full functionality. Public APIs need no key.
+                                            Las claves API se almacenan localmente en el archivo <span className="text-cyan-400">.env</span> del backend. Las claves marcadas con <Key size={8} className="inline text-yellow-500" /> son necesarias para la funcionalidad completa. Las APIs públicas no requieren clave.
                                         </p>
                                     </div>
                                 </div>
@@ -300,7 +300,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                                             {category.toUpperCase()}
                                                         </span>
                                                         <span className="text-[10px] text-[var(--text-muted)] font-mono">
-                                                            {categoryApis.length} {categoryApis.length === 1 ? 'service' : 'services'}
+                                                            {categoryApis.length} {categoryApis.length === 1 ? 'servicio' : 'servicios'}
                                                         </span>
                                                     </div>
                                                     {isExpanded ? <ChevronUp size={12} className="text-[var(--text-muted)]" /> : <ChevronDown size={12} className="text-[var(--text-muted)]" />}
@@ -323,12 +323,12 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                                                         <div className="flex items-center gap-1.5">
                                                                             {api.has_key ? (
                                                                                 api.is_set ? (
-                                                                                    <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-green-500/30 text-green-400 bg-green-950/20">KEY SET</span>
+                                                                                    <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-green-500/30 text-green-400 bg-green-950/20">CONFIGURADA</span>
                                                                                 ) : (
-                                                                                    <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-yellow-500/30 text-yellow-400 bg-yellow-950/20">MISSING</span>
+                                                                                    <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-yellow-500/30 text-yellow-400 bg-yellow-950/20">FALTANTE</span>
                                                                                 )
                                                                             ) : (
-                                                                                <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-[var(--border-primary)] text-[var(--text-muted)]">PUBLIC</span>
+                                                                                <span className="text-[8px] font-mono px-1.5 py-0.5 rounded border border-[var(--border-primary)] text-[var(--text-muted)]">PÚBLICA</span>
                                                                             )}
                                                                             {api.url && (
                                                                                 <a href={api.url} target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-cyan-400 transition-colors" onClick={(e) => e.stopPropagation()}>
@@ -342,16 +342,16 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                                                         <div className="mt-2">
                                                                             {editingId === api.id ? (
                                                                                 <div className="flex gap-2">
-                                                                                    <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} className="flex-1 bg-black/60 border border-cyan-900/50 rounded px-2 py-1.5 text-[11px] font-mono text-cyan-300 outline-none focus:border-cyan-500/70 transition-colors" placeholder="Enter API key..." autoFocus />
+                                                                                    <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} className="flex-1 bg-black/60 border border-cyan-900/50 rounded px-2 py-1.5 text-[11px] font-mono text-cyan-300 outline-none focus:border-cyan-500/70 transition-colors" placeholder="Ingrese clave API..." autoFocus />
                                                                                     <button onClick={() => saveKey(api)} disabled={saving} className="px-3 py-1.5 rounded bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/30 transition-colors text-[10px] font-mono flex items-center gap-1">
-                                                                                        <Save size={10} />{saving ? "..." : "SAVE"}
+                                                                                        <Save size={10} />{saving ? "..." : "GUARDAR"}
                                                                                     </button>
                                                                                     <button onClick={() => setEditingId(null)} className="px-2 py-1.5 rounded border border-[var(--border-primary)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-secondary)] transition-colors text-[10px] font-mono">ESC</button>
                                                                                 </div>
                                                                             ) : (
                                                                                 <div className="flex items-center gap-1.5">
                                                                                     <div className="flex-1 bg-[var(--bg-primary)]/40 border border-[var(--border-primary)] rounded px-2.5 py-1.5 font-mono text-[11px] cursor-pointer hover:border-[var(--border-secondary)] transition-colors select-none" onClick={() => startEditing(api)}>
-                                                                                        <span className="text-[var(--text-muted)] tracking-wider">{api.is_set ? api.value_obfuscated : "Click to set key..."}</span>
+                                                                                        <span className="text-[var(--text-muted)] tracking-wider">{api.is_set ? api.value_obfuscated : "Clic para configurar clave..."}</span>
                                                                                     </div>
                                                                                 </div>
                                                                             )}
@@ -370,8 +370,8 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                 {/* Footer */}
                                 <div className="p-4 border-t border-[var(--border-primary)]/80">
                                     <div className="flex items-center justify-between text-[9px] text-[var(--text-muted)] font-mono">
-                                        <span>{apis.length} REGISTERED APIs</span>
-                                        <span>{apis.filter(a => a.has_key).length} KEYS CONFIGURED</span>
+                                        <span>{apis.length} APIs REGISTRADAS</span>
+                                        <span>{apis.filter(a => a.has_key).length} CLAVES CONFIGURADAS</span>
                                     </div>
                                 </div>
                             </>
@@ -385,7 +385,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                     <div className="flex items-start gap-2">
                                         <Rss size={12} className="text-orange-500 mt-0.5 flex-shrink-0" />
                                         <p className="text-[10px] text-[var(--text-secondary)] font-mono leading-relaxed">
-                                            Configure RSS/Atom feeds for the Threat Intel news panel. Each feed is scored by keyword heuristics and weighted by the priority you set. Up to <span className="text-orange-400">{MAX_FEEDS}</span> sources.
+                                            Configure fuentes RSS/Atom para el panel de noticias de inteligencia. Cada fuente se puntúa por heurísticas de palabras clave y se pondera según la prioridad que establezca. Hasta <span className="text-orange-400">{MAX_FEEDS}</span> fuentes.
                                         </p>
                                     </div>
                                 </div>
@@ -401,7 +401,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                                     value={feed.name}
                                                     onChange={(e) => updateFeed(idx, "name", e.target.value)}
                                                     className="flex-1 bg-transparent border-b border-[var(--border-primary)] text-xs font-mono text-[var(--text-primary)] outline-none focus:border-cyan-500/70 transition-colors px-1 py-0.5"
-                                                    placeholder="Source name..."
+                                                    placeholder="Nombre de la fuente..."
                                                 />
                                                 {/* Weight selector */}
                                                 <div className="flex items-center gap-1">
@@ -445,7 +445,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                         className="w-full py-2.5 rounded-lg border border-dashed border-[var(--border-primary)]/60 text-[var(--text-muted)] hover:border-orange-500/50 hover:text-orange-400 hover:bg-orange-950/10 transition-all text-[10px] font-mono flex items-center justify-center gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed"
                                     >
                                         <Plus size={10} />
-                                        ADD FEED ({feeds.length}/{MAX_FEEDS})
+                                        AÑADIR FUENTE ({feeds.length}/{MAX_FEEDS})
                                     </button>
                                 </div>
 
@@ -465,7 +465,7 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                             className="flex-1 px-4 py-2 rounded bg-orange-500/20 border border-orange-500/40 text-orange-400 hover:bg-orange-500/30 transition-colors text-[10px] font-mono flex items-center justify-center gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed"
                                         >
                                             <Save size={10} />
-                                            {feedSaving ? "SAVING..." : "SAVE FEEDS"}
+                                            {feedSaving ? "GUARDANDO..." : "GUARDAR FUENTES"}
                                         </button>
                                         <button
                                             onClick={resetFeeds}
@@ -473,12 +473,12 @@ const SettingsPanel = React.memo(function SettingsPanel({ isOpen, onClose }: { i
                                             title="Reset to defaults"
                                         >
                                             <RotateCcw size={10} />
-                                            RESET
+                                            RESTABLECER
                                         </button>
                                     </div>
                                     <div className="flex items-center justify-between text-[9px] text-[var(--text-muted)] font-mono mt-2">
-                                        <span>{feeds.length}/{MAX_FEEDS} SOURCES</span>
-                                        <span>WEIGHT: 1=LOW  5=CRITICAL</span>
+                                        <span>{feeds.length}/{MAX_FEEDS} FUENTES</span>
+                                        <span>PESO: 1=BAJO  5=CRÍTICO</span>
                                     </div>
                                 </div>
                             </>
