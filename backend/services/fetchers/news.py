@@ -14,6 +14,7 @@ from services.network_utils import fetch_with_curl
 from services.fetchers._store import latest_data, _data_lock, _mark_fresh
 from services.fetchers.retry import with_retry
 from services.metrics_store import record_usage, record_error
+from services.metrics_store import get_metrics
 
 # Cargar .env con override=True para recoger claves añadidas tras el arranque
 load_dotenv(override=True)
@@ -250,6 +251,12 @@ def translate_titles_batch(texts: list[str]) -> dict[str, str]:
     Devuelve dict {texto_original: traducción}.
     Los textos ya cacheados no se envían a la API.
     """
+    # Comprobar límite diario antes de llamar a la API
+    metrics = get_metrics()
+    if metrics.get("tokens_today", 0) >= 100000:
+        logger.warning("Límite diario de tokens alcanzado — traducción pausada")
+        return {text: text for text in texts}
+
     if not texts:
         return {}
 
